@@ -22,6 +22,7 @@ public abstract class Usuario {
 	public Usuario(@JsonProperty(value="id")long id, @JsonProperty(value="tipoId")String tipoId, 
 			@JsonProperty(value="nombre")String nombre, @JsonProperty(value="correo")String correo,
 			@JsonProperty(value="rol")String rol){
+		super();
 		setId(id);
 		setTipoId(tipoId);
 		setNombre(nombre);
