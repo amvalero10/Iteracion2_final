@@ -17,15 +17,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import tm.RotondAndesTM;
-import vos.Entrada;
+import vos.Acompaniamiento;
 
 /**
  * 
  * @author angeloMarcetty
  *
  */
-@Path("entradas")
-public class EntradaServices {
+@Path("acompaniamiento")
+public class AcompaniamientoService
+{
 	
 	@Context
 	private ServletContext context;
@@ -41,32 +42,32 @@ public class EntradaServices {
 	}
 	
 	
+	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getEntradas() {
+	public Response getAcompaniamientos() {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Entrada> entradas;
+		List<Acompaniamiento> acompaniamientos;
 		try {
-			entradas = tm.darEntradas();
+			acompaniamientos = tm.darAcompaniamientos();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(acompaniamientos).build();
 	}
-	
 	
 	
 	
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntrada( @PathParam( "id" ) Long id )
+	public Response getAcompaniamiento( @PathParam( "id" ) Long id )
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
 		try
 		{
-			Entrada e = tm.buscarEntradaPorId( id );
-			return Response.status( 200 ).entity( e ).build( );			
+			Acompaniamiento a = tm.buscarAcompaniamientoPorId( id );
+			return Response.status( 200 ).entity( a ).build( );			
 		}
 		catch( Exception e )
 		{
@@ -81,17 +82,17 @@ public class EntradaServices {
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntradaName( @QueryParam("nombre") String name) {
+	public Response getAcompaniamientoName( @QueryParam("nombre") String name) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Entrada> entradas;
+		List<Acompaniamiento> acompaniamientos;
 		try {
 			if (name == null || name.length() == 0)
-				throw new Exception("Nombre de la Entrada no valido");
-			entradas = tm.buscarEntradaPorName(name);
+				throw new Exception("Nombre del Acompaniamiento no valido");
+			acompaniamientos = tm.buscarAcompaniamientoPorName(name);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(acompaniamientos).build();
 	}
 	
 	
@@ -100,14 +101,14 @@ public class EntradaServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntrada(Entrada entrada) {
+	public Response addAcompaniamiento(Acompaniamiento acompaniamiento) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.addEntrada(entrada);
+			tm.addAcompaniamiento(acompaniamiento);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(acompaniamiento).build();
 	}
 	
 	
@@ -117,14 +118,14 @@ public class EntradaServices {
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntradas(List<Entrada> entradas) {
+	public Response addAcompaniamientos(List<Acompaniamiento> acompaniamientos) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.addEntradas(entradas);;
+			tm.addAcompaniamientos(acompaniamientos);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(acompaniamientos).build();
 	}
 	
 	
@@ -132,14 +133,14 @@ public class EntradaServices {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateEntrada(Entrada entrada) {
+	public Response updateAcompaniamiento(Acompaniamiento acompaniamiento) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.updateEntrada(entrada);
+			tm.updateAcompaniamiento(acompaniamiento);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(acompaniamiento).build();
 	}
 	
 	
@@ -149,15 +150,37 @@ public class EntradaServices {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteEntrada(Entrada entrada) {
+	public Response deleteAcompaniamiento(Acompaniamiento acompaniamiento) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.deleteEntrada(entrada);
+			tm.deleteAcompaniamiento(acompaniamiento);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(acompaniamiento).build();
 	}
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }

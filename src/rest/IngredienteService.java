@@ -17,15 +17,16 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import tm.RotondAndesTM;
-import vos.Entrada;
+import vos.Ingrediente;
 
 /**
  * 
  * @author angeloMarcetty
  *
  */
-@Path("entradas")
-public class EntradaServices {
+@Path("ingredientes")
+public class IngredienteService {
+		
 	
 	@Context
 	private ServletContext context;
@@ -43,15 +44,15 @@ public class EntradaServices {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getEntradas() {
+	public Response getIngredientes() {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Entrada> entradas;
+		List<Ingrediente> ingredientes;
 		try {
-			entradas = tm.darEntradas();
+			ingredientes = tm.darIngredientes();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(ingredientes).build();
 	}
 	
 	
@@ -60,12 +61,12 @@ public class EntradaServices {
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntrada( @PathParam( "id" ) Long id )
+	public Response getIngrediente( @PathParam( "id" ) Long id )
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
 		try
 		{
-			Entrada e = tm.buscarEntradaPorId( id );
+			Ingrediente e = tm.buscarIngredienteId(id);
 			return Response.status( 200 ).entity( e ).build( );			
 		}
 		catch( Exception e )
@@ -81,17 +82,17 @@ public class EntradaServices {
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntradaName( @QueryParam("nombre") String name) {
+	public Response getIngredienteName( @QueryParam("nombre") String name) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Entrada> entradas;
+		List<Ingrediente> ingredientes;
 		try {
 			if (name == null || name.length() == 0)
-				throw new Exception("Nombre de la Entrada no valido");
-			entradas = tm.buscarEntradaPorName(name);
+				throw new Exception("Nombre del Ingrediente no valido");
+			ingredientes = tm.buscarIngredientePorName(name);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(ingredientes).build();
 	}
 	
 	
@@ -100,14 +101,14 @@ public class EntradaServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntrada(Entrada entrada) {
+	public Response addIngrediente(Ingrediente ingrediente) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.addEntrada(entrada);
+			tm.addIngrediente(ingrediente);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(ingrediente).build();
 	}
 	
 	
@@ -117,14 +118,14 @@ public class EntradaServices {
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntradas(List<Entrada> entradas) {
+	public Response addEntradas(List<Ingrediente> ingredientes) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.addEntradas(entradas);;
+			tm.addIngredientes(ingredientes);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(ingredientes).build();
 	}
 	
 	
@@ -132,14 +133,14 @@ public class EntradaServices {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateEntrada(Entrada entrada) {
+	public Response updateIngrediente(Ingrediente ingrediente) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.updateEntrada(entrada);
+			tm.updateIngrediente(ingrediente);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(ingrediente).build();
 	}
 	
 	
@@ -149,15 +150,36 @@ public class EntradaServices {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteEntrada(Entrada entrada) {
+	public Response deleteIngrediente(Ingrediente ingrediente) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.deleteEntrada(entrada);
+			tm.deleteIngrediente(ingrediente);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(ingrediente).build();
 	}
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 }
