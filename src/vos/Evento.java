@@ -1,17 +1,15 @@
 package vos;
 
-import java.sql.Date;
-import java.sql.Time;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Evento {
 	
 	@JsonProperty(value="fecha")
-	private Date fecha;
+	private String fecha;
 	
-	@JsonProperty(value="hora")
-	private Time hora;
+	//@JsonProperty(value="hora")
+	//private Time hora;
 	
 	@JsonProperty(value="cantidad")
 	private int cantidad;
@@ -19,9 +17,9 @@ public class Evento {
 	@JsonProperty(value="nombre")
 	private String nombre;
 	
-	public Evento(@JsonProperty(value="fecha")Date fecha, @JsonProperty(value="hora")Time hora, @JsonProperty(value="cantidad")int cantidad, @JsonProperty(value="nombre")String nombre){
+	public Evento(@JsonProperty(value="fecha")String fecha, @JsonProperty(value="cantidad")int cantidad, @JsonProperty(value="nombre")String nombre){
 		setFecha(fecha);
-		setHora(hora);
+		//setHora(hora);
 		setCantidad(cantidad);
 		setNombre(nombre);
 	}
@@ -29,30 +27,30 @@ public class Evento {
 	/**
 	 * @return the fecha
 	 */
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 
 	/**
 	 * @return the hora
 	 */
-	public Time getHora() {
-		return hora;
-	}
+	//public Time getHora() {
+		//return hora;
+	//}
 
 	/**
 	 * @param hora the hora to set
 	 */
-	public void setHora(Time hora) {
-		this.hora = hora;
-	}
+	//public void setHora(Time hora) {
+		//this.hora = hora;
+	//}
 
 	/**
 	 * @return the cantidad

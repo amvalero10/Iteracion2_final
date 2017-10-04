@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import vos.Evento;
@@ -71,11 +72,11 @@ public class DAOTablaEventos {
 		ResultSet rs = prepStmt.executeQuery();
 
 		while (rs.next()) {
-			Date fecha = rs.getDate("FECHA");
-			Time hora = rs.getTime("HORA");
+			String fecha = rs.getString("FECHA");
+			//Time hora = rs.getTime("HORA");
 			String nombre = rs.getString("NOMBRE");
 			Integer cantidad = rs.getInt("CANTIDAD");
-			eventos.add(new Evento(fecha, hora, cantidad, nombre));
+			eventos.add(new Evento(fecha, cantidad, nombre));
 		}
 		return eventos;
 	}
@@ -97,11 +98,11 @@ public class DAOTablaEventos {
 		ResultSet rs = prepStmt.executeQuery();
 
 		while (rs.next()) {
-			Date fecha = rs.getDate("FECHA");
-			Time hora = rs.getTime("HORA");
+			String fecha = rs.getString("FECHA");
+			//Time hora = rs.getTime("HORA");
 			String nombre = rs.getString("NOMBRE");
 			Integer cantidad = rs.getInt("CANTIDAD");
-			eventos.add(new Evento(fecha, hora, cantidad, nombre));
+			eventos.add(new Evento(fecha, cantidad, nombre));
 		}
 
 		return eventos;
@@ -118,8 +119,7 @@ public class DAOTablaEventos {
 	public void addEvento(Evento evento) throws SQLException, Exception {
 
 		String sql = "INSERT INTO EVENTO VALUES ('";
-		sql += evento.getFecha() + "','";
-		sql += evento.getHora() + "',";
+		sql += evento.getFecha() + "',";
 		sql += evento.getCantidad() + ",'";
 		sql += evento.getNombre() + "')";
 
@@ -141,7 +141,7 @@ public class DAOTablaEventos {
 
 		String sql = "UPDATE EVENTO SET ";
 		sql += "FECHA='" + evento.getFecha() + "',";
-		sql += "HORA='" + evento.getHora() + "',";
+		//sql += "HORA='" + evento.getHora() + "',";
 		sql += "CANTIDAD=" + evento.getCantidad();
 		sql += " WHERE NOMBRE = '" + evento.getNombre() + "'";
 		

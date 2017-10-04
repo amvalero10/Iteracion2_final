@@ -14,12 +14,14 @@ public class Zona {
 	private String tipoEspacio;
 	
 	@JsonProperty(value="apto")
-	private boolean apto;
+	private int apto;
 	
 	@JsonProperty(value="capacidad")
 	private int capacidad;
 	
-	public Zona(String nombre, String condiciones, String tipoEspacio, boolean apto, int capacidad){
+	public Zona(@JsonProperty(value="nombre")String nombre, @JsonProperty(value="condiciones")String condiciones, 
+			@JsonProperty(value="tipoEspacio")String tipoEspacio, @JsonProperty(value="apto")int apto, 
+			@JsonProperty(value="capacidad")int capacidad){
 		setNombre(nombre);
 		setCondiciones(condiciones);
 		setTipoEspacio(tipoEspacio);
@@ -58,14 +60,14 @@ public class Zona {
 	/**
 	 * @return the apto
 	 */
-	public boolean isApto() {
+	public int getApto() {
 		return apto;
 	}
 
 	/**
 	 * @param apto the apto to set
 	 */
-	public void setApto(boolean apto) {
+	public void setApto(int apto) {
 		this.apto = apto;
 	}
 

@@ -71,7 +71,7 @@ public class DAOTablaZona {
 			String nombre = rs.getString("NOMBRE");
 			String condiciones = rs.getString("CONDICIONES");
 			String tipoEspacio = rs.getString("TIPOESPACIO");
-			Boolean apto = rs.getBoolean("APTO");
+			Integer apto = rs.getInt("APTO");
 			Integer capacidad = rs.getInt("CAPACIDAD");
 			zonas.add(new Zona(nombre, condiciones, tipoEspacio, apto, capacidad));
 		}
@@ -98,7 +98,7 @@ public class DAOTablaZona {
 			String nombre = rs.getString("NOMBRE");
 			String condiciones = rs.getString("CONDICIONES");
 			String tipoEspacio = rs.getString("TIPOESPACIO");
-			Boolean apto = rs.getBoolean("APTO");
+			Integer apto = rs.getInt("APTO");
 			Integer capacidad = rs.getInt("CAPACIDAD");
 			zonas.add(new Zona(nombre, condiciones, tipoEspacio, apto, capacidad));
 		}
@@ -120,7 +120,7 @@ public class DAOTablaZona {
 		sql += zona.getNombre() + "','";
 		sql += zona.getCondiciones() + "','";
 		sql += zona.getTipoEspacio() + "',";
-		sql += zona.isApto() + ",";
+		sql += zona.getApto() + ",";
 		sql += zona.getCapacidad() + ")";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
@@ -142,7 +142,7 @@ public class DAOTablaZona {
 		String sql = "UPDATE ZONA SET ";
 		sql += "CONDICIONES='" + zona.getCondiciones() + "',";
 		sql += "TIPOESPACIO='" + zona.getTipoEspacio() + "',";
-		sql += "APTO=" + zona.isApto() + ",";
+		sql += "APTO=" + zona.getApto() + ",";
 		sql += "CAPACIDAD=" + zona.getCapacidad();
 		sql += " WHERE NOMBRE = '" + zona.getNombre() + "'";
 

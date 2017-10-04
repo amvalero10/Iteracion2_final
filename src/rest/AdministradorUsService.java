@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import tm.RotondAndesTM;
 import vos.AdministradorUs;
+import vos.ClienteUs;
 
 
 @Path("administradores")
@@ -128,6 +129,20 @@ public class AdministradorUsService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(administrador).build();
+	}
+	
+	@POST
+	@Path( "{id: \\d+}" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addClienteAdministradorUs(@PathParam( "id" ) Long id, ClienteUs cliente) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {
+			tm.addClienteAdministradorUs(id,cliente);
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		return Response.status(200).entity(cliente).build();
 	}
 	
     /**

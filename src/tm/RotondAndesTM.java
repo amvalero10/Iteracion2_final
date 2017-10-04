@@ -1209,6 +1209,43 @@ public class RotondAndesTM {
 			}
 		}
 		
+		//revisar que este el cliente
+		public void addClienteAdministradorUs(Long id, ClienteUs cliente) throws Exception {
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			DAOTablaAdministradorUs daoAdministradorUs = new DAOTablaAdministradorUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoAdministradorUs.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoAdministradorUs.buscarAdministradorPorId(id);
+				daoClienteUs.addCliente(cliente);
+				conn.commit();
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClienteUs.cerrarRecursos();
+					daoAdministradorUs.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+		}
+		
+		
 		/**
 		 * Metodo que modela la transaccion que agrega los videos que entran como parametro a la base de datos.
 		 * <b> post: </b> se han agregado los videos que entran como parametro

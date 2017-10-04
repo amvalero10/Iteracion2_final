@@ -13,7 +13,7 @@ public class Tarjeta {
 	private int contrasenia;
 	
 	@JsonProperty(value="fechaExpiracion")
-	private Date fechaExpiracion;
+	private String fechaExpiracion;
 	
 	@JsonProperty(value="tipo")
 	private String tipo;
@@ -22,7 +22,7 @@ public class Tarjeta {
 	private String nombreBanco;
 	
 	public Tarjeta(@JsonProperty(value="numero")long numero, @JsonProperty(value="contrasenia")int contrasenia,
-			@JsonProperty(value="fechaExpiracion")Date fechaExpiracion, @JsonProperty(value="tipo")String tipo,
+			@JsonProperty(value="fechaExpiracion")String fechaExpiracion, @JsonProperty(value="tipo")String tipo,
 			@JsonProperty(value="nombreBanco")String nombreBanco){
 		setNumero(numero);
 		setContrasenia(contrasenia);
@@ -62,14 +62,14 @@ public class Tarjeta {
 	/**
 	 * @return the fechaExpiracion
 	 */
-	public Date getFechaExpiracion() {
+	public String getFechaExpiracion() {
 		return fechaExpiracion;
 	}
 
 	/**
 	 * @param fechaExpiracion the fechaExpiracion to set
 	 */
-	public void setFechaExpiracion(Date fechaExpiracion) {
+	public void setFechaExpiracion(String fechaExpiracion) {
 		this.fechaExpiracion = fechaExpiracion;
 	}
 

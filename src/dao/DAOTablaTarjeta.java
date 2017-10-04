@@ -71,7 +71,7 @@ public class DAOTablaTarjeta {
 		while (rs.next()) {
 			Long numero = rs.getLong("NUMERO");
 			Integer contrasenia = rs.getInt("CONTRASENIA");
-			Date fechaExpiracion = rs.getDate("FECHAEXPIRACION");
+			String fechaExpiracion = rs.getString("FECHAEXPIRACION");
 			String tipo = rs.getString("TIPO");
 			String nombreBanco = rs.getString("NOMBREBANCO");
 			tarjetas.add(new Tarjeta(numero, contrasenia, fechaExpiracion, tipo, nombreBanco));
@@ -99,7 +99,7 @@ public class DAOTablaTarjeta {
 		if(rs.next()) {
 			Long numero = rs.getLong("NUMERO");
 			Integer contrasenia = rs.getInt("CONTRASENIA");
-			Date fechaExpiracion = rs.getDate("FECHAEXPIRACION");
+			String fechaExpiracion = rs.getString("FECHAEXPIRACION");
 			String tipo = rs.getString("TIPO");
 			String nombreBanco = rs.getString("NOMBREBANCO");
 			tarjeta = new Tarjeta(numero, contrasenia, fechaExpiracion, tipo, nombreBanco);
