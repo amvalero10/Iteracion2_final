@@ -16,9 +16,11 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import tm.RotondAndesTM;
 import vos.AdministradorUs;
 import vos.ClienteUs;
+import vos.Zona;
 
 
 @Path("administradores")
@@ -132,7 +134,7 @@ public class AdministradorUsService {
 	}
 	
 	@POST
-	@Path( "{id: \\d+}" )
+	@Path( "{id: \\d+}/cliente" )
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addClienteAdministradorUs(@PathParam( "id" ) Long id, ClienteUs cliente) {
@@ -143,6 +145,20 @@ public class AdministradorUsService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(cliente).build();
+	}
+	
+	@POST
+	@Path( "{id: \\d+}/zona" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addZonaAdministradorUs(@PathParam( "id" ) Long id, Zona zona) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {
+			tm.addZonaAdministradorUs(id,zona);
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		return Response.status(200).entity(zona).build();
 	}
 	
     /**
