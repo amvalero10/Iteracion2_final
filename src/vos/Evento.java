@@ -1,15 +1,12 @@
 package vos;
 
-import java.sql.Date;
-import java.sql.Time;
-import java.sql.Timestamp;
 
 import org.codehaus.jackson.annotate.JsonProperty;
 
 public class Evento {
 	
 	@JsonProperty(value="fecha")
-	private Timestamp fecha;
+	private String fecha;
 	
 	//@JsonProperty(value="hora")
 	//private Time hora;
@@ -20,7 +17,7 @@ public class Evento {
 	@JsonProperty(value="nombre")
 	private String nombre;
 	
-	public Evento(@JsonProperty(value="fecha")Timestamp fecha, @JsonProperty(value="cantidad")int cantidad, @JsonProperty(value="nombre")String nombre){
+	public Evento(@JsonProperty(value="fecha")String fecha, @JsonProperty(value="cantidad")int cantidad, @JsonProperty(value="nombre")String nombre){
 		setFecha(fecha);
 		//setHora(hora);
 		setCantidad(cantidad);
@@ -30,14 +27,14 @@ public class Evento {
 	/**
 	 * @return the fecha
 	 */
-	public Timestamp getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
 
 	/**
 	 * @param fecha the fecha to set
 	 */
-	public void setFecha(Timestamp fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 

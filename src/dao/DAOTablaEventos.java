@@ -72,7 +72,7 @@ public class DAOTablaEventos {
 		ResultSet rs = prepStmt.executeQuery();
 
 		while (rs.next()) {
-			Timestamp fecha = rs.getTimestamp("FECHA");
+			String fecha = rs.getString("FECHA");
 			//Time hora = rs.getTime("HORA");
 			String nombre = rs.getString("NOMBRE");
 			Integer cantidad = rs.getInt("CANTIDAD");
@@ -98,7 +98,7 @@ public class DAOTablaEventos {
 		ResultSet rs = prepStmt.executeQuery();
 
 		while (rs.next()) {
-			Timestamp fecha = rs.getTimestamp("FECHA");
+			String fecha = rs.getString("FECHA");
 			//Time hora = rs.getTime("HORA");
 			String nombre = rs.getString("NOMBRE");
 			Integer cantidad = rs.getInt("CANTIDAD");
@@ -118,8 +118,8 @@ public class DAOTablaEventos {
 	 */
 	public void addEvento(Evento evento) throws SQLException, Exception {
 
-		String sql = "INSERT INTO EVENTO VALUES (";
-		sql += evento.getFecha() + ",";
+		String sql = "INSERT INTO EVENTO VALUES ('";
+		sql += evento.getFecha() + "',";
 		sql += evento.getCantidad() + ",'";
 		sql += evento.getNombre() + "')";
 
