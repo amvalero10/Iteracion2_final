@@ -157,7 +157,7 @@ public  class DAOTablaEntrada {
 		String sql = "INSERT INTO ENTRADA VALUES (";
 		sql += entrada.getId() + ",'";
 		sql += entrada.getNombre() + "',";
-		sql += entrada.getCantidad() + ",'";
+		sql += entrada.getCantidad() + ",";
 
 		if(entrada.getPersonalizable() == true){
 			sql += 1+ ",";

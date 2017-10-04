@@ -20,7 +20,9 @@ import jdk.nashorn.internal.ir.annotations.Ignore;
 import tm.RotondAndesTM;
 import vos.AdministradorUs;
 import vos.ClienteUs;
+
 import vos.Zona;
+
 
 
 @Path("administradores")
@@ -147,6 +149,7 @@ public class AdministradorUsService {
 		return Response.status(200).entity(cliente).build();
 	}
 	
+
 	@POST
 	@Path( "{id: \\d+}/zona" )
 	@Consumes(MediaType.APPLICATION_JSON)
@@ -161,6 +164,7 @@ public class AdministradorUsService {
 		return Response.status(200).entity(zona).build();
 	}
 	
+
     /**
      * Metodo que expone servicio REST usando POST que agrega los videos que recibe en Json
      * <b>URL: </b> http://"ip o nombre de host":8080/VideoAndes/rest/videos/varios

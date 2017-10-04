@@ -1246,6 +1246,8 @@ public class RotondAndesTM {
 			}
 		}
 
+  
+
 		//revisar que este el cliente
 		public void addZonaAdministradorUs(Long id, Zona zona) throws Exception {
 			DAOTablaZona daoZona = new DAOTablaZona();
@@ -1281,6 +1283,7 @@ public class RotondAndesTM {
 				}
 			}
 		}
+
 		
 		
 		/**

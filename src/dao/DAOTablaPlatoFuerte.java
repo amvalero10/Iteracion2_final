@@ -155,7 +155,7 @@ public class DAOTablaPlatoFuerte {
 		String sql = "INSERT INTO PLATO_FUERTE VALUES (";
 		sql += platoFuerte.getId() + ",'";
 		sql += platoFuerte.getNombre() + "',";
-		sql += platoFuerte.getCantidad() + ",'";
+		sql += platoFuerte.getCantidad() + ",";
 
 		if(platoFuerte.getPersonalizable() == true){
 			sql += 1+ ",";
