@@ -157,7 +157,7 @@ public class DAOTablaAcompaniamiento {
 		String sql = "INSERT INTO ACOMPANIAMIENTO VALUES (";
 		sql += acompanimiento.getId() + ",'";
 		sql += acompanimiento.getNombre() + "',";
-		sql += acompanimiento.getCantidad() + ",'";
+		sql += acompanimiento.getCantidad() + ",";
 
 		if(acompanimiento.getPersonalizable() == true){
 			sql += 1+ ",";

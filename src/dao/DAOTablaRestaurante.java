@@ -214,15 +214,15 @@ public class DAOTablaRestaurante {
 		sql += "CUENTA_BANCARIA=" + restaurante.getCuentaBancaria() + ",";
 
 		if(restaurante.getPersonalizable() == true){
-			sql += "CUENTA_BANCARIA=" + 1 + ",";
+			sql += "PERSONALIZABLE=" + 1 + ",";
 		}
 		else {
-			sql += "CUENTA_BANCARIA=" + 0 + ",";
+			sql += "PERSONALIZABLE=" + 0 + ",";
 		}
 
 		sql += "DESCRIPCION='" + restaurante.getDescripcion() + "',";
 		sql += "TIPO='" + restaurante.getTipo() + "',";
-		sql += "PAGINA_WEB='" + restaurante.getPaginaWeb() + "'";
+		sql += "PAGINA_WEB='" + restaurante.getPaginaWeb() + "',";
 		sql += "REPRESENTANTE='" + restaurante.getRepresentante() + "'";
 
 		sql += " WHERE ID = " + restaurante.getId();

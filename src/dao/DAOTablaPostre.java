@@ -158,7 +158,7 @@ public class DAOTablaPostre {
 		String sql = "INSERT INTO POSTRE VALUES (";
 		sql += postre.getId() + ",'";
 		sql += postre.getNombre() + "',";
-		sql += postre.getCantidad() + ",'";
+		sql += postre.getCantidad() + ",";
 
 		if(postre.getPersonalizable() == true){
 			sql += 1+ ",";

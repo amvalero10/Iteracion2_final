@@ -24,10 +24,10 @@ import vos.Restaurante;
  * @author angeloMarcetty
  *
  */
-@Path("restaurantesus/{idRestaurantesus: \\\\d+}/restaurantes")
+@Path("administradores/{idAdministradores: \\d+}/restaurantes")
 public class RestauranteServices {
-
 	
+		
 	/**
 	 * Atributo que usa la anotacion @Context para tener el ServletContext de la conexion actual.
 	 */
@@ -56,11 +56,11 @@ public class RestauranteServices {
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getRestaurantes(@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
+	public Response getRestaurantes(@PathParam("idAdministradores") Long idAdministradores) throws Exception {
 		
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 
-		if(tm.buscarRestauranteUsPorId(idRestaurantesus) != null ) 
+		if(tm.buscarAdministradorUsPorId(idAdministradores) != null) 
 		{			
 			List<Restaurante> restaurantes;
 			try {
@@ -89,12 +89,12 @@ public class RestauranteServices {
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getRestaurante(@PathParam("id") Long id, @PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
+	public Response getRestaurante(@PathParam("id") Long id,@PathParam("idAdministradores") Long idAdministradores) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 
-		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) {
-
-			try {
+		if (tm.buscarAdministradorUsPorId(idAdministradores) != null ) {
+			try 
+			{
 				Restaurante r = tm.buscarRestaurantePorId(id);
 				return Response.status(200).entity(r).build();
 			} catch (Exception e) {
@@ -116,12 +116,16 @@ public class RestauranteServices {
      * @param name - Nombre del Restaurante a buscar que entra en la URL como parametro 
      * @return Json con el/los Restaurante encontrados con el nombre que entra como parametro o json con 
      * el error que se produjo
+	 * @throws Exception 
      */
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getRestauranteName( @QueryParam("nombre") String name) {
+	public Response getRestauranteName( @QueryParam("nombre") String name,@PathParam("idAdministradores") Long idAdministradores) throws Exception {
+		
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarAdministradorUsPorId(idAdministradores) != null ) {
 		List<Restaurante> restaurantes;
 		try {
 			if (name == null || name.length() == 0)
@@ -131,6 +135,13 @@ public class RestauranteServices {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(restaurantes).build();
+		
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
+			
 	}
 	
 	
@@ -141,18 +152,27 @@ public class RestauranteServices {
      * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/restaurantes/restaurante
      * @param Restaurante - restaurante a agregar
      * @return Json con el restaurante que agrego o Json con el error que se produjo
+	 * @throws Exception 
      */
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addRestaurante(Restaurante restaurante) {
+	public Response addRestaurante(Restaurante restaurante,@PathParam("idAdministradores") Long idAdministradores) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarAdministradorUsPorId(idAdministradores) != null ) {
 		try {
 			tm.addRestaurante(restaurante);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(restaurante).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
+			
 	}
 	
 	
@@ -162,19 +182,27 @@ public class RestauranteServices {
      * <b>URL: </b> http://"ip o nombre de host":8080/RotondoAndes/rest/restaurantes/varios
      * @param Restaurantes - Restaurantes a agregar. 
      * @return Json con el Restaurante que agrego o Json con el error que se produjo
+	 * @throws Exception 
      */
 	@POST
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addRestaurantes(List<Restaurante> restaurantes) {
+	public Response addRestaurantes(List<Restaurante> restaurantes,@PathParam("idAdministradores") Long idAdministradores) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarAdministradorUsPorId(idAdministradores) != null ) {
 		try {
 			tm.addRestaurantes(restaurantes);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(restaurantes).build();
+		}
+		else 
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -184,18 +212,25 @@ public class RestauranteServices {
      * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/restaurantes
      * @param video - video a actualizar. 
      * @return Json con el video que actualizo o Json con el error que se produjo
+	 * @throws Exception 
      */
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateRestaurante(Restaurante restaurante) {
+	public Response updateRestaurante(Restaurante restaurante,@PathParam("idAdministradores") Long idAdministradores) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarAdministradorUsPorId(idAdministradores) != null ) {
 		try {
 			tm.updateRestaurante(restaurante);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(restaurante).build();
+		}
+		else {
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -206,18 +241,27 @@ public class RestauranteServices {
      * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/restaurantes
      * @param Restaurante - Restaurante a aliminar. 
      * @return Json con el Restaurante que elimino o Json con el error que se produjo
+	 * @throws Exception 
      */
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteRestaurante(Restaurante restaurante) {
+	public Response deleteRestaurante(Restaurante restaurante,@PathParam("idAdministradores") Long idAdministradores) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarAdministradorUsPorId(idAdministradores) != null ) {
 		try {
 			tm.deleteRestaurante(restaurante);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(restaurante).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
+			
 	}
 	
 	

@@ -59,21 +59,20 @@ public abstract class AbstractAlimento {
 		@JsonProperty(value="descripcionIng")String descripcionIng, @JsonProperty(value="numeroVendidos")Integer numeroVendidos, @JsonProperty(value="traduccion")String traduccion)
 	{
 		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.cantidad = cantidad;
-		this.personalizable = personalizable;
-		this.precioVenta = precioVenta;
-		this.restaurante = restaurante;
-		this.categoria = categoria;
-		this.descripcion = descripcion;
-		this.tiempoPrep = tiempoPrep;
-		this.precioProd = precioProd;
-		this.tipo = tipo;
-		this.descripcionIng = descripcionIng;
-		this.numeroVendidos = numeroVendidos;
-		this.traduccion = traduccion;
-		
+		setId(id);
+		setNombre(nombre);
+		setCantidad(cantidad);
+		setPersonalizable(personalizable);
+		setPrecioVenta(precioVenta);
+		setRestaurante(restaurante);
+		setCategoria(categoria);
+		setDescripcion(descripcion);
+		setTiempoPrep(tiempoPrep);
+		setPrecioProd(precioProd);
+		setTipo(tipo);
+		setDescripcionIng(descripcionIng);
+		setNumeroVendidos(numeroVendidos);
+		setTraduccion(traduccion);	
 	}
 	
 	
