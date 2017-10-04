@@ -36,7 +36,7 @@ public abstract class AbstractAlimento {
 	private String descripcion;
 	
 	@JsonProperty(value="tiempoPrep")
-	private Time tiempoPrep;
+	private Integer tiempoPrep;
 	
 	@JsonProperty(value="precioProd")
 	private Double precioProd;
@@ -55,7 +55,7 @@ public abstract class AbstractAlimento {
 	
 	
 	public AbstractAlimento(@JsonProperty(value="id")Long id,@JsonProperty(value="nombre")String nombre,@JsonProperty(value="cantidad")Integer cantidad,@JsonProperty(value="personalizable")Boolean personalizable,
-			@JsonProperty(value="precioVenta")Double precioVenta,@JsonProperty(value="restaurante")String restaurante, @JsonProperty(value="categoria")String categoria, @JsonProperty(value="descripcion")String descripcion, @JsonProperty(value="tiempoPrep")Time tiempoPrep, @JsonProperty(value="precioProd")Double precioProd, @JsonProperty(value="tipo")String tipo,
+			@JsonProperty(value="precioVenta")Double precioVenta,@JsonProperty(value="restaurante")String restaurante, @JsonProperty(value="categoria")String categoria, @JsonProperty(value="descripcion")String descripcion, @JsonProperty(value="tiempoPrep")Integer tiempoPrep, @JsonProperty(value="precioProd")Double precioProd, @JsonProperty(value="tipo")String tipo,
 		@JsonProperty(value="descripcionIng")String descripcionIng, @JsonProperty(value="numeroVendidos")Integer numeroVendidos, @JsonProperty(value="traduccion")String traduccion)
 	{
 		super();
@@ -72,7 +72,7 @@ public abstract class AbstractAlimento {
 		this.tipo = tipo;
 		this.descripcionIng = descripcionIng;
 		this.numeroVendidos = numeroVendidos;
-		this.setTraduccion(traduccion);
+		this.traduccion = traduccion;
 		
 	}
 	
@@ -141,10 +141,10 @@ public abstract class AbstractAlimento {
 	}
 
 
-	public Time getTiempoPrep() {
+	public Integer getTiempoPrep() {
 		return tiempoPrep;
 	}
-	public void setTiempoPrep(Time tiempoPrep) {
+	public void setTiempoPrep(Integer tiempoPrep) {
 		this.tiempoPrep = tiempoPrep;
 	}
 

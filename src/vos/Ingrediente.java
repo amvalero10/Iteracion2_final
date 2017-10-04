@@ -25,15 +25,20 @@ public class Ingrediente {
 	@JsonProperty(value="descripcionIng")
 	private String descripcionIng;
 	
+	@JsonProperty(value="traduccion")
+	private String traduccion;
+	
 	public Ingrediente(@JsonProperty(value="id")Long id,@JsonProperty(value="nombre")String nombre,
-			@JsonProperty(value="tipo")String tipo, @JsonProperty(value="descripcionEsp")String descripcionEsp, @JsonProperty(value="descripcionIng")String descripcionIng) {
+			@JsonProperty(value="tipo")String tipo, @JsonProperty(value="descripcionEsp")String descripcionEsp,
+			@JsonProperty(value="descripcionIng")String descripcionIng,@JsonProperty(value="traduccion")String traduccion )
+	{
 		super();
-		this.setId(id);
-		this.setNombre(nombre);
-		this.setTipo(tipo);
-		this.setDescripcionEsp(descripcionEsp);
-		this.setDescripcionIng(descripcionIng);
-		
+		this.id = id;
+		this.nombre = nombre;
+		this.tipo = tipo;
+		this.descripcionEsp = descripcionEsp;
+		this.descripcionIng = descripcionIng;
+		this.traduccion = traduccion;
 	}
 
 	public Long getId() {
@@ -69,6 +74,14 @@ public class Ingrediente {
 	}
 	public void setDescripcionIng(String descripcionIng) {
 		this.descripcionIng = descripcionIng;
+	}
+
+	public String getTraduccion() {
+		return traduccion;
+	}
+
+	public void setTraduccion(String traduccion) {
+		this.traduccion = traduccion;
 	}
 	
 	

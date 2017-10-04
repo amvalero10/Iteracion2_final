@@ -61,8 +61,8 @@ public class DAOTablaAcompaniamiento {
 			String restaurante = rs.getString("RESTAURANTE");
 			String categoria = rs.getString("CATEGORIA");
 			String descripcion = rs.getString("DESCRIPCION");
-			Time tiempoPrep = rs.getTime("TIEMPO_PREP");
-			Double precioProd = rs.getDouble("TIEMPO_PROD");
+			Integer tiempoPrep = rs.getInt("TIEMPO_PREP");
+			Double precioProd = rs.getDouble("PRECIO_PROD");
 			String tipo = rs.getString("TIPO");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
 			Integer numeroVendidos = rs.getInt("NUMERO_VENDIDOS");
@@ -97,8 +97,8 @@ public class DAOTablaAcompaniamiento {
 			String restaurante = rs.getString("RESTAURANTE");
 			String categoria = rs.getString("CATEGORIA");
 			String descripcion = rs.getString("DESCRIPCION");
-			Time tiempoPrep = rs.getTime("TIEMPO_PREP");
-			Double precioProd = rs.getDouble("TIEMPO_PROD");
+			Integer tiempoPrep = rs.getInt("TIEMPO_PREP");
+			Double precioProd = rs.getDouble("PRECIO_PROD");
 			String tipo = rs.getString("TIPO");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
 			Integer numeroVendidos = rs.getInt("NUMERO_VENDIDOS");
@@ -135,8 +135,8 @@ public class DAOTablaAcompaniamiento {
 			String restaurante = rs.getString("RESTAURANTE");
 			String categoria = rs.getString("CATEGORIA");
 			String descripcion = rs.getString("DESCRIPCION");
-			Time tiempoPrep = rs.getTime("TIEMPO_PREP");
-			Double precioProd = rs.getDouble("TIEMPO_PROD");
+			Integer tiempoPrep = rs.getInt("TIEMPO_PREP");
+			Double precioProd = rs.getDouble("PRECIO_PROD");
 			String tipo = rs.getString("TIPO");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
 			Integer numeroVendidos = rs.getInt("NUMERO_VENDIDOS");

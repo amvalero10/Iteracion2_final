@@ -17,16 +17,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import tm.RotondAndesTM;
-import vos.Entrada;
+import vos.PlatoFuerte;
 
 /**
  * 
  * @author angeloMarcetty
  *
  */
-@Path("entradas")
-public class EntradaServices {
-	
+@Path("platofuertes")
+public class PlatoFuerteService {
 	@Context
 	private ServletContext context;
 	
@@ -43,15 +42,15 @@ public class EntradaServices {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getEntradas() {
+	public Response getPlatoFuertes() {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Entrada> entradas;
+		List<PlatoFuerte> platoFuertes;
 		try {
-			entradas = tm.darEntradas();
+			platoFuertes = tm.darPlatoFuertes();
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(platoFuertes).build();
 	}
 	
 	
@@ -60,12 +59,12 @@ public class EntradaServices {
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntrada( @PathParam( "id" ) Long id )
+	public Response getPlatoFuerte( @PathParam( "id" ) Long id )
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
 		try
 		{
-			Entrada e = tm.buscarEntradaPorId( id );
+			PlatoFuerte e = tm.buscarPlatoFuerteId(id);
 			return Response.status( 200 ).entity( e ).build( );			
 		}
 		catch( Exception e )
@@ -81,17 +80,17 @@ public class EntradaServices {
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntradaName( @QueryParam("nombre") String name) {
+	public Response getPlatoFuerteName( @QueryParam("nombre") String name) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Entrada> entradas;
+		List<PlatoFuerte> platoFuertes;
 		try {
 			if (name == null || name.length() == 0)
-				throw new Exception("Nombre de la Entrada no valido");
-			entradas = tm.buscarEntradaPorName(name);
+				throw new Exception("Nombre del PlatoFuerte no valido");
+			platoFuertes = tm.buscarplatoFuertesPorName(name);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(platoFuertes).build();
 	}
 	
 	
@@ -100,14 +99,14 @@ public class EntradaServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntrada(Entrada entrada) {
+	public Response addPlatoFuerte(PlatoFuerte platoFuerte) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.addEntrada(entrada);
+			tm.addPlatoFuerte(platoFuerte);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(platoFuerte).build();
 	}
 	
 	
@@ -117,14 +116,14 @@ public class EntradaServices {
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntradas(List<Entrada> entradas) {
+	public Response addPlatoFuertes(List<PlatoFuerte> platoFuertes) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.addEntradas(entradas);;
+			tm.addPlatoFuertes(platoFuertes);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entradas).build();
+		return Response.status(200).entity(platoFuertes).build();
 	}
 	
 	
@@ -132,14 +131,14 @@ public class EntradaServices {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateEntrada(Entrada entrada) {
+	public Response updatePlatoFuerte(PlatoFuerte platoFuerte) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.updateEntrada(entrada);
+			tm.updatePlatoFuerte(platoFuerte);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(platoFuerte).build();
 	}
 	
 	
@@ -149,15 +148,16 @@ public class EntradaServices {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteEntrada(Entrada entrada) {
+	public Response deletePlatoFuerte(PlatoFuerte platoFuerte) {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
 		try {
-			tm.deleteEntrada(entrada);
+			tm.deletePlatoFuerte(platoFuerte);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
-		return Response.status(200).entity(entrada).build();
+		return Response.status(200).entity(platoFuerte).build();
 	}
 	
 
+	
 }

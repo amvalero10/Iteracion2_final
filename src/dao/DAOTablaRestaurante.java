@@ -85,8 +85,10 @@ public class DAOTablaRestaurante {
 			String descripcion = rs.getString("DESCRIPCION");
 			String tipo = rs.getString("TIPO");
 			String paginaWeb = rs.getString("PAGINA_WEB");
+			String representante = rs.getString("REPRESENTANTE");
+
 			
-			restaurantes.add(new Restaurante(id, nombre, cuentaBancaria, personalizable, descripcion, tipo, paginaWeb));		
+			restaurantes.add(new Restaurante(id, nombre, cuentaBancaria, personalizable, descripcion, tipo, paginaWeb,representante));		
 		}
 		return restaurantes;
 	}
@@ -119,7 +121,9 @@ public class DAOTablaRestaurante {
 			String descripcion = rs.getString("DESCRIPCION");
 			String tipo = rs.getString("TIPO");
 			String paginaWeb = rs.getString("PAGINA_WEB");
-			restaurantes.add(new Restaurante(id, nombre, cuentaBancaria, personalizable, descripcion, tipo, paginaWeb));		
+			String representante = rs.getString("REPRESENTANTE");
+			
+			restaurantes.add(new Restaurante(id, nombre, cuentaBancaria, personalizable, descripcion, tipo, paginaWeb, representante));		
 
 		}
 
@@ -155,7 +159,8 @@ public class DAOTablaRestaurante {
 			String descripcion = rs.getString("DESCRIPCION");
 			String tipo = rs.getString("TIPO");
 			String paginaWeb = rs.getString("PAGINA_WEB");
-			restaurante = new Restaurante(id2, nombre, cuentaBancaria, personalizable, descripcion, tipo, paginaWeb);		
+			String representante = rs.getString("REPRESENTANTE");
+			restaurante = new Restaurante(id2, nombre, cuentaBancaria, personalizable, descripcion, tipo, paginaWeb,representante);		
 		}
 		return restaurante;
 	}
@@ -185,8 +190,8 @@ public class DAOTablaRestaurante {
 		
 		sql += restaurante.getDescripcion()+ "','";
 		sql += restaurante.getTipo()+ "','";
-		sql += restaurante.getPaginaWeb()+ "')";
-
+		sql += restaurante.getPaginaWeb()+ "','";
+		sql += restaurante.getRepresentante()+ "')";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -218,6 +223,7 @@ public class DAOTablaRestaurante {
 		sql += "DESCRIPCION='" + restaurante.getDescripcion() + "',";
 		sql += "TIPO='" + restaurante.getTipo() + "',";
 		sql += "PAGINA_WEB='" + restaurante.getPaginaWeb() + "'";
+		sql += "REPRESENTANTE='" + restaurante.getRepresentante() + "'";
 
 		sql += " WHERE ID = " + restaurante.getId();
 

@@ -56,10 +56,12 @@ public class DAOTablaIngrediente {
 			String tipo = rs.getString("TIPO");
 			String descripcionEsp = rs.getString("DESCRIPCION_ESP");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
+			String traduccion = rs.getString("TRADUCCION");
+
 
 			
 			
-			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng);
+			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng,traduccion);
 			ingredientes.add(entr);
 		}
 		return ingredientes;
@@ -84,10 +86,10 @@ public class DAOTablaIngrediente {
 			String tipo = rs.getString("TIPO");
 			String descripcionEsp = rs.getString("DESCRIPCION_ESP");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
-
+			String traduccion = rs.getString("TRADUCCION");
 			
 			
-			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng);
+			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng, traduccion);
 			ingredientes.add(entr);
 		
 		}
@@ -114,8 +116,9 @@ public class DAOTablaIngrediente {
 			String tipo = rs.getString("TIPO");
 			String descripcionEsp = rs.getString("DESCRIPCION_ESP");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
+			String traduccion = rs.getString("TRADUCCION");
 			
-			ingrediente = new Ingrediente(id2, nombre, tipo, descripcionEsp, descripcionIng);
+			ingrediente = new Ingrediente(id2, nombre, tipo, descripcionEsp, descripcionIng,traduccion);
 			
 		}
 
@@ -132,8 +135,8 @@ public class DAOTablaIngrediente {
 		sql += ingrediente.getNombre() + "','";
 		sql += ingrediente.getTipo() + "','";
 		sql += ingrediente.getDescripcionEsp() + "','";
-		sql += ingrediente.getDescripcionIng() + "')";
-
+		sql += ingrediente.getDescripcionIng() + "','";
+		sql += ingrediente.getTraduccion() + "')";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -151,6 +154,8 @@ public class DAOTablaIngrediente {
 		sql += "TIPO='" + ingrediente.getTipo() + "',";
 		sql += "DESCRIPCION_ESP='" + ingrediente.getDescripcionEsp() + "',";
 		sql += "DESCRIPCION_ING='" + ingrediente.getDescripcionIng() + "',";
+		sql += "TRADUCCION='" + ingrediente.getTraduccion()+ "',";
+
 		sql += " WHERE ID = " + ingrediente.getId();
 
 
