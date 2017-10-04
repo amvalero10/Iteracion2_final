@@ -32,10 +32,13 @@ public class Restaurante {
 	@JsonProperty(value="paginaWeb")
 	private String paginaWeb;
 	
+	@JsonProperty(value="representante")
+	private String representante;
+	
 	
 	public Restaurante(@JsonProperty(value="id")Long id, @JsonProperty(value="nombre")String nombre,@JsonProperty(value="cuentaBancaria")Long cuentaBancaria,
 			@JsonProperty(value="personalizable")Boolean personalizable,@JsonProperty(value="descripcion")String descripcion,@JsonProperty(value="tipo")String tipo,
-			@JsonProperty(value="paginaWeb")String paginaWeb){
+			@JsonProperty(value="paginaWeb")String paginaWeb,@JsonProperty(value="representante")String representante ){
 		
 		super();
 		this.id = id;
@@ -45,6 +48,7 @@ public class Restaurante {
 		this.descripcion = descripcion;
 		this.tipo = tipo;
 		this.paginaWeb = paginaWeb;	
+		this.representante = representante;
 		
 	}
 
@@ -102,6 +106,16 @@ public class Restaurante {
 	}
 	public void setPaginaWeb(String paginaWeb) {
 		this.paginaWeb = paginaWeb;
+	}
+
+
+	public String getRepresentante() {
+		return representante;
+	}
+
+
+	public void setRepresentante(String representante) {
+		this.representante = representante;
 	}
 	
 	
