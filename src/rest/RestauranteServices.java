@@ -24,7 +24,7 @@ import vos.Restaurante;
  * @author angeloMarcetty
  *
  */
-@Path("restaurantes")
+@Path("restaurantesus/{idRestaurantesus: \\\\d+}/restaurantes")
 public class RestauranteServices {
 
 	
@@ -52,18 +52,28 @@ public class RestauranteServices {
 	 * <b>URL: </b> http://"ip o nombre de host":8080/RotondAndes/rest/restaurantes
 	 * @return Json con todos los Restaurantes de la base de datos o json con 
      * el error que se produjo
+	 * @throws Exception 
 	 */
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getRestaurantes() {
+	public Response getRestaurantes(@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
+		
 		RotondAndesTM tm = new RotondAndesTM(getPath());
-		List<Restaurante> restaurantes;
-		try {
-			restaurantes = tm.darRestaurantes();
-		} catch (Exception e) {
-			return Response.status(500).entity(doErrorMessage(e)).build();
+
+		if(tm.buscarRestauranteUsPorId(idRestaurantesus) != null ) 
+		{			
+			List<Restaurante> restaurantes;
+			try {
+				restaurantes = tm.darRestaurantes();
+			} catch (Exception e) {
+				return Response.status(500).entity(doErrorMessage(e)).build();
+			}
+			return Response.status(200).entity(restaurantes).build();						
 		}
-		return Response.status(200).entity(restaurantes).build();
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -74,21 +84,25 @@ public class RestauranteServices {
      * @param id - id del Restaurante a buscar que entra en la URL como parametro 
      * @return Json con el/los Restaurante encontrados con el id que entra como parametro o json con 
      * el error que se produjo
+	 * @throws Exception 
      */
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getRestaurante( @PathParam( "id" ) Long id )
-	{
-		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
-		try
-		{
-			Restaurante r = tm.buscarRestaurantePorId( id );
-			return Response.status( 200 ).entity( r ).build( );			
+	public Response getRestaurante(@PathParam("id") Long id, @PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) {
+
+			try {
+				Restaurante r = tm.buscarRestaurantePorId(id);
+				return Response.status(200).entity(r).build();
+			} catch (Exception e) {
+				return Response.status(500).entity(doErrorMessage(e)).build();
+			}
 		}
-		catch( Exception e )
-		{
-			return Response.status( 500 ).entity( doErrorMessage( e ) ).build( );
+		else {
+			throw new Exception("No tiene permisos para acceder a estos recursos");
 		}
 	}
 	
