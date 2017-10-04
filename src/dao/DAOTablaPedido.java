@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import vos.ClienteUs;
 import vos.Pedido;
 
 public class DAOTablaPedido {
@@ -72,7 +73,13 @@ public class DAOTablaPedido {
 			Long idUsuario = rs.getLong("IDUSUARIO");
 			Integer mesa = rs.getInt("MESA");
 			Double costo = rs.getDouble("COSTO");
-			pedidos.add(new Pedido(id, idUsuario, mesa, costo));
+			Long idEntrada = rs.getLong("ID_ENTRADA");
+			Long idAcomp = rs.getLong("ID_ACOMP");
+			Long idPlato = rs.getLong("ID_PLATO");
+			Long idBebida = rs.getLong("ID_BEBIDA");
+			Long idPostre = rs.getLong("ID_POSTRE");
+			Long fecha = rs.getLong("FECHA");
+			pedidos.add(new Pedido(id, idUsuario, mesa, costo, idEntrada, idAcomp, idPlato, idBebida, idPostre, fecha));
 		}
 		return pedidos;
 	}
@@ -99,7 +106,13 @@ public class DAOTablaPedido {
 			Long idUsuario = rs.getLong("IDUSUARIO");
 			Integer mesa = rs.getInt("MESA");
 			Double costo = rs.getDouble("COSTO");
-			pedido = new Pedido(id2, idUsuario, mesa, costo);
+			Long idEntrada = rs.getLong("ID_ENTRADA");
+			Long idAcomp = rs.getLong("ID_ACOMP");
+			Long idPlato = rs.getLong("ID_PLATO");
+			Long idBebida = rs.getLong("ID_BEBIDA");
+			Long idPostre = rs.getLong("ID_POSTRE");
+			Long fecha = rs.getLong("FECHA");
+			pedido = new Pedido(id2, idUsuario, mesa, costo, idEntrada, idAcomp, idPlato, idBebida, idPostre, fecha);
 		}
 
 		return pedido;
@@ -119,14 +132,21 @@ public class DAOTablaPedido {
 		sql += pedido.getId() + ",";
 		sql += pedido.getIdUsuario() + ",";
 		sql += pedido.getMesa() + ",";
-		sql += pedido.getCosto() + ")";
+		sql += pedido.getCosto() + ",";
+		sql += pedido.getIdEntrada() + ",";
+		sql += pedido.getIdAcomp() + ",";
+		sql += pedido.getIdPlato() + ",";
+		sql += pedido.getIdBebida() + ",";
+		sql += pedido.getIdPostre() + ",";
+		sql += pedido.getFecha() + ")";
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
 		prepStmt.executeQuery();
 
 	}
-
+	
+	
 	/**
 	 * Metodo que actualiza el video que entra como parametro en la base de datos.
 	 * @param video - el video a actualizar. video !=  null
@@ -140,7 +160,13 @@ public class DAOTablaPedido {
 		String sql = "UPDATE PEDIDO SET ";
 		sql += "IDUSUARIO=" + pedido.getIdUsuario() + ",";
 		sql += "MESA=" + pedido.getMesa() + ",";
-		sql += "COSTO=" + pedido.getCosto();
+		sql += "COSTO=" + pedido.getCosto()+ ",";
+		sql += "ID_ENTRADA=" + pedido.getIdEntrada()+ ",";
+		sql += "ID_ACOMP=" + pedido.getIdAcomp()+ ",";
+		sql += "ID_PLATO=" + pedido.getIdPlato()+ ",";
+		sql += "ID_BEBIDA=" + pedido.getIdBebida()+ ",";
+		sql += "ID_POSTRE=" + pedido.getIdPostre()+ ",";
+		sql += "FECHA=" + pedido.getFecha();
 		sql += " WHERE ID = " + pedido.getId();
 
 

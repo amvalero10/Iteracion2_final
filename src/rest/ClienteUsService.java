@@ -268,4 +268,77 @@ public class ClienteUsService {
 		}
 		return Response.status(200).entity(cliente).build();
 	}
+
+	@DELETE
+	@Path( "{id: \\d+}"+"/entrada/"+"{id2: \\d+}" )
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePreferenciaEntradaClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Entrada entrada = tm.deletePreferenciaEntradaClienteUs(id, id2);
+			return Response.status( 200 ).entity( entrada ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
+	@DELETE
+	@Path( "{id: \\d+}"+"/bebida/"+"{id2: \\d+}" )
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePreferenciaBebidaClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Bebida bebida = tm.deletePreferenciaBebidaClienteUs(id, id2);
+			return Response.status( 200 ).entity( bebida ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+
+	@DELETE
+	@Path( "{id: \\d+}"+"/postre/"+"{id2: \\d+}" )
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePreferenciaPostreClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Postre postre = tm.deletePreferenciaPostreClienteUs(id, id2);
+			return Response.status( 200 ).entity( postre ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+
+	@DELETE
+	@Path( "{id: \\d+}"+"/acompaniamiento/"+"{id2: \\d+}" )
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePreferenciaAcompaniamientoClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Acompaniamiento acompanamiento = tm.deletePreferenciaAcompaniamientoClienteUs(id, id2);
+			return Response.status( 200 ).entity( acompanamiento ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
+	@DELETE
+	@Path( "{id: \\d+}"+"/plato/"+"{id2: \\d+}" )
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response deletePreferenciaPlatoFuerteClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			PlatoFuerte plato = tm.deletePreferenciaPlatoFuerteClienteUs(id, id2);
+			return Response.status( 200 ).entity( plato ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
+	
+
 }

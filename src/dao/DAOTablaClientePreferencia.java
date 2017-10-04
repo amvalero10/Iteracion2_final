@@ -98,7 +98,56 @@ public class DAOTablaClientePreferencia {
 		prepStmt.executeQuery();
 	}
 	
+	public void deleteClienteEntrada(Long id, Long id2)throws SQLException, Exception{
+		String sql = "DELETE FROM CLIENTE_ENTRADA";
+		sql += " WHERE COD_CLIENTE = " + id; 
+		sql +=" AND COD_ENTRADA = " + id2 ;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
 	
+	public void deleteClienteBebida(Long id, Long id2)throws SQLException, Exception{
+		String sql = "DELETE FROM CLIENTE_BEBIDA";
+		sql += " WHERE COD_CLIENTE = " + id; 
+		sql +=" AND COD_BEBIDA = " + id2 ;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void deleteClientePostre(Long id, Long id2)throws SQLException, Exception{
+		String sql = "DELETE FROM CLIENTE_POSTRE";
+		sql += " WHERE COD_CLIENTE = " + id; 
+		sql +=" AND COD_POSTRE = " + id2 ;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void deleteClienteAcompaniamiento(Long id, Long id2)throws SQLException, Exception{
+		String sql = "DELETE FROM CLIENTE_ACOMP";
+		sql += " WHERE COD_CLIENTE = " + id; 
+		sql +=" AND COD_ACOMP = " + id2 ;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void deleteClientePlatoFuerte(Long id, Long id2)throws SQLException, Exception{
+		String sql = "DELETE FROM CLIENTE_PLATO";
+		sql += " WHERE COD_CLIENTE = " + id; 
+		sql +=" AND COD_PLATO = " + id2 ;
+
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+
 	
 	
 }

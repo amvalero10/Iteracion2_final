@@ -454,11 +454,15 @@ public class RotondAndesTM {
 		 */
 		public void addPedido(Pedido pedido) throws Exception {
 			DAOTablaPedido daoPedido = new DAOTablaPedido();
+			DAOTablaClienteUs daoCliente = new DAOTablaClienteUs();
 			try 
 			{
 				//////transaccion
 				this.conn = darConexion();
 				daoPedido.setConn(conn);
+				daoCliente.setConn(conn);
+				ClienteUs cliente = daoCliente.buscarClientePorId(pedido.getIdUsuario());
+				cliente.getPedidos().add(pedido);
 				daoPedido.addPedido(pedido);
 				conn.commit();
 
@@ -472,6 +476,7 @@ public class RotondAndesTM {
 				throw e;
 			} finally {
 				try {
+					daoCliente.cerrarRecursos();
 					daoPedido.cerrarRecursos();
 					if(this.conn!=null)
 						this.conn.close();
@@ -1881,6 +1886,212 @@ public class RotondAndesTM {
 			}
 		}
 
+		public Entrada deletePreferenciaEntradaClienteUs(long id, long id2) throws Exception {
+			Entrada entrada;
+			ClienteUs cliente;
+			DAOTablaClientePreferencia daoClientePref = new DAOTablaClientePreferencia();
+			DAOTablaEntrada daoEntrada = new DAOTablaEntrada();
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoClientePref.setConn(conn);
+				daoEntrada.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoClienteUs.buscarClientePorId(id);
+				entrada = daoEntrada.buscarEntradaPorId(id2);
+				daoClientePref.deleteClienteEntrada(id, id2);
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClientePref.cerrarRecursos();
+					daoClienteUs.cerrarRecursos();
+					daoEntrada.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+			return entrada;
+		}
+
+		public Bebida deletePreferenciaBebidaClienteUs(long id, long id2) throws Exception {
+			Bebida bebida;
+			ClienteUs cliente;
+			DAOTablaClientePreferencia daoClientePref = new DAOTablaClientePreferencia();
+			DAOTablaBebida daoBebida = new DAOTablaBebida();
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoClientePref.setConn(conn);
+				daoBebida.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoClienteUs.buscarClientePorId(id);
+				bebida = daoBebida.buscarBebidaPorId(id2);
+				daoClientePref.deleteClienteBebida(id, id2);
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClientePref.cerrarRecursos();
+					daoClienteUs.cerrarRecursos();
+					daoBebida.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+			return bebida;
+		}
+
+		public Postre deletePreferenciaPostreClienteUs(long id, long id2) throws Exception {
+			Postre postre;
+			ClienteUs cliente;
+			DAOTablaClientePreferencia daoClientePref = new DAOTablaClientePreferencia();
+			DAOTablaPostre daoPostre = new DAOTablaPostre();
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoClientePref.setConn(conn);
+				daoPostre.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoClienteUs.buscarClientePorId(id);
+				postre = daoPostre.buscarPostrePorId(id2);
+				daoClientePref.deleteClientePostre(id, id2);
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClientePref.cerrarRecursos();
+					daoClienteUs.cerrarRecursos();
+					daoPostre.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+			return postre;
+		}
+		
+		public Acompaniamiento deletePreferenciaAcompaniamientoClienteUs(long id, long id2) throws Exception {
+			Acompaniamiento acomp;
+			ClienteUs cliente;
+			DAOTablaClientePreferencia daoClientePref = new DAOTablaClientePreferencia();
+			DAOTablaAcompaniamiento daoAcomp = new DAOTablaAcompaniamiento();
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoClientePref.setConn(conn);
+				daoAcomp.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoClienteUs.buscarClientePorId(id);
+				acomp = daoAcomp.buscarAcompaniamientoPorId(id2);
+				daoClientePref.deleteClienteAcompaniamiento(id, id2);
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClientePref.cerrarRecursos();
+					daoClienteUs.cerrarRecursos();
+					daoAcomp.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+			return acomp;
+		}
+
+		public PlatoFuerte deletePreferenciaPlatoFuerteClienteUs(long id, long id2) throws Exception {
+			PlatoFuerte plato;
+			ClienteUs cliente;
+			DAOTablaClientePreferencia daoClientePref = new DAOTablaClientePreferencia();
+			DAOTablaPlatoFuerte daoPlato = new DAOTablaPlatoFuerte();
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoClientePref.setConn(conn);
+				daoPlato.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoClienteUs.buscarClientePorId(id);
+				plato = daoPlato.buscarPlatoFuertePorId(id2);
+				daoClientePref.deleteClientePlatoFuerte(id, id2);
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClientePref.cerrarRecursos();
+					daoClienteUs.cerrarRecursos();
+					daoPlato.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+			return plato;
+		}
+
+		
 		//RestauranteUs
 		
 		/**
