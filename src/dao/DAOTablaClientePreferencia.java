@@ -58,6 +58,46 @@ public class DAOTablaClientePreferencia {
 		prepStmt.executeQuery();
 	}
 	
+	public void addClienteBebida(Long id, Long id2) throws SQLException, Exception{
+		String sql = "INSERT INTO CLIENTE_BEBIDA VALUES (";
+		sql += id + ",";
+		sql += id2 + ")";
+		
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void addClientePostre(Long id, Long id2) throws SQLException, Exception{
+		String sql = "INSERT INTO CLIENTE_POSTRE VALUES (";
+		sql += id + ",";
+		sql += id2 + ")";
+		
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void addClienteAcomp(Long id, Long id2) throws SQLException, Exception{
+		String sql = "INSERT INTO CLIENTE_ACOMP VALUES (";
+		sql += id + ",";
+		sql += id2 + ")";
+		
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
+	public void addClientePlato(Long id, Long id2) throws SQLException, Exception{
+		String sql = "INSERT INTO CLIENTE_PLATO VALUES (";
+		sql += id + ",";
+		sql += id2 + ")";
+		
+		PreparedStatement prepStmt = conn.prepareStatement(sql);
+		recursos.add(prepStmt);
+		prepStmt.executeQuery();
+	}
+	
 	
 	
 	

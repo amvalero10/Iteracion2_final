@@ -17,8 +17,12 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import tm.RotondAndesTM;
+import vos.Acompaniamiento;
+import vos.Bebida;
 import vos.ClienteUs;
 import vos.Entrada;
+import vos.PlatoFuerte;
+import vos.Postre;
 
 
 @Path("clientes")
@@ -132,7 +136,7 @@ public class ClienteUsService {
 	}
 	
 	@POST
-	@Path( "/entrada/{id: \\d+}/{id2: \\d+}" )
+	@Path( "{id: \\d+}"+"/entrada/"+"{id2: \\d+}" )
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response addPreferenciaEntradaClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
@@ -145,6 +149,67 @@ public class ClienteUsService {
 		}
 		
 	}
+	
+	@POST
+	@Path( "{id: \\d+}"+"/bebida/"+"{id2: \\d+}" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addPreferenciaBebidaClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Bebida bebida = tm.addPreferenciaBebidaClienteUs(id, id2);
+			return Response.status( 200 ).entity( bebida ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
+	@POST
+	@Path( "{id: \\d+}"+"/postre/"+"{id2: \\d+}" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addPreferenciaPostreClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Postre postre = tm.addPreferenciaPostreClienteUs(id, id2);
+			return Response.status( 200 ).entity( postre ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
+	@POST
+	@Path( "{id: \\d+}"+"/acompaniamiento/"+"{id2: \\d+}" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addPreferenciaAcompaniamientoClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Acompaniamiento acomp = tm.addPreferenciaAcompaniamientoClienteUs(id, id2);
+			return Response.status( 200 ).entity( acomp ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
+	@POST
+	@Path( "{id: \\d+}"+"/platofuerte/"+"{id2: \\d+}" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addPreferenciaPlatoFuerteClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			PlatoFuerte plato = tm.addPreferenciaPlatoFuerteClienteUs(id, id2);
+			return Response.status( 200 ).entity( plato ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
+	}
+	
 	
     /**
      * Metodo que expone servicio REST usando POST que agrega los videos que recibe en Json
