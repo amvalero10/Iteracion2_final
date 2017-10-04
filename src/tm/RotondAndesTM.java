@@ -28,6 +28,7 @@ import vos.Zona;
 import dao.DAOTablaAcompaniamiento;
 import dao.DAOTablaAdministradorUs;
 import dao.DAOTablaBebida;
+import dao.DAOTablaClientePreferencia;
 import dao.DAOTablaClienteUs;
 import dao.DAOTablaEventos;
 import dao.DAOTablaIngrediente;
@@ -1244,6 +1245,45 @@ public class RotondAndesTM {
 				}
 			}
 		}
+
+  
+
+		//revisar que este el cliente
+		public void addZonaAdministradorUs(Long id, Zona zona) throws Exception {
+			DAOTablaZona daoZona = new DAOTablaZona();
+			DAOTablaAdministradorUs daoAdministradorUs = new DAOTablaAdministradorUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoAdministradorUs.setConn(conn);
+				daoZona.setConn(conn);
+				daoAdministradorUs.buscarAdministradorPorId(id);
+				daoZona.addZona(zona);
+				conn.commit();
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoZona.cerrarRecursos();
+					daoAdministradorUs.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+		}
+
 		
 		
 		/**
@@ -1513,6 +1553,49 @@ public class RotondAndesTM {
 				}
 			}
 		}
+
+		public Entrada addPreferenciaEntradaClienteUs(Long id, Long id2) throws Exception {
+			Entrada entrada;
+			ClienteUs cliente;
+			DAOTablaClientePreferencia daoClientePref = new DAOTablaClientePreferencia();
+			DAOTablaEntrada daoEntrada = new DAOTablaEntrada();
+			DAOTablaClienteUs daoClienteUs = new DAOTablaClienteUs();
+			try 
+			{
+				//////transaccion
+				this.conn = darConexion();
+				daoClientePref.setConn(conn);
+				daoEntrada.setConn(conn);
+				daoClienteUs.setConn(conn);
+				daoClienteUs.buscarClientePorId(id);
+				entrada = daoEntrada.buscarEntradaPorId(id2);
+				daoClientePref.addClienteEntrada(id, id2);
+				conn.commit();
+
+			} catch (SQLException e) {
+				System.err.println("SQLException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} catch (Exception e) {
+				System.err.println("GeneralException:" + e.getMessage());
+				e.printStackTrace();
+				throw e;
+			} finally {
+				try {
+					daoClienteUs.cerrarRecursos();
+					daoEntrada.cerrarRecursos();
+					daoClientePref.cerrarRecursos();
+					if(this.conn!=null)
+						this.conn.close();
+				} catch (SQLException exception) {
+					System.err.println("SQLException closing resources:" + exception.getMessage());
+					exception.printStackTrace();
+					throw exception;
+				}
+			}
+			return entrada;
+		}
+
 		
 		/**
 		 * Metodo que modela la transaccion que agrega los videos que entran como parametro a la base de datos.

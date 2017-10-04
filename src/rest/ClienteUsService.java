@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import tm.RotondAndesTM;
 import vos.ClienteUs;
+import vos.Entrada;
 
 
 @Path("clientes")
@@ -128,6 +129,21 @@ public class ClienteUsService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(cliente).build();
+	}
+	
+	@POST
+	@Path( "/entrada/{id: \\d+}/{id2: \\d+}" )
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response addPreferenciaEntradaClienteUs(@PathParam( "id" )Long id, @PathParam( "id2" )Long id2) {
+		RotondAndesTM tm = new RotondAndesTM(getPath());
+		try {			
+			Entrada entrada = tm.addPreferenciaEntradaClienteUs(id, id2);
+			return Response.status( 200 ).entity( entrada ).build( );	
+		} catch (Exception e) {
+			return Response.status(500).entity(doErrorMessage(e)).build();
+		}
+		
 	}
 	
     /**
