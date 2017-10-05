@@ -1,29 +1,65 @@
-URL's DE EJEMPLO - PRUEBAS EN POSTMAN
+URL's DE EJEMPLO - PRUEBAS EN POSTMAN 
 
-GET (TODOS LOS VIDEOS)
+RF1 http://localhost:8080/RotondAndes/rest/clientes/
+@POST
+body: {
+    "id": 1000,
+    "tipoId": "cadula",
+    "nombre": "sebastian",
+    "correo": "abierto",
+    "rol": "cliente"
+    
+}
 
-http://localhost:8080/VideoAndes/rest/videos
+RF2 http://localhost:8080/RotondAndes/rest/administradores/1/cliente
+@POST
 
-GET (VIDEO POR ID)
+body: {
+    "id": 2000,
+    "tipoId": "cadula",
+    "nombre": "sebastian",
+    "correo": "abierto",
+    "rol": "cliente"
+    
+}
 
-http://localhost:8080/VideoAndes/rest/videos/1
+RF7 REF1 http://localhost:8080/RotondAndes/rest/administradores/1/zona
+@POST
 
-GET (VIDEO POR NOMBRE)
+body: {
+    	"nombre": "prueba",
+        "condiciones": "cerrado",
+        "tipoEspacio": "cerrado",
+        "apto": 1,
+        "capacidad": 20
+    
+}
 
-http://localhost:8080/VideoAndes/rest/videos/nombre?nombre=Orgullo y Prejuicio
+RF8 http://localhost:8080/RotondAndes/rest/clientes/1/entrada/1
+	http://localhost:8080/RotondAndes/rest/clientes/1/bebida/1
+	http://localhost:8080/RotondAndes/rest/clientes/1/postre/1
+	http://localhost:8080/RotondAndes/rest/clientes/1/acompaniamiento/1
+	http://localhost:8080/RotondAndes/rest/clientes/1/platofuerte/1
+@POST
 
-POST 
+RF9 http://localhost:8080/RotondAndes/rest/pedidos
+@POST
 
-http://localhost:8080/VideoAndes/rest/videos
-
-JSON:
-
-	{
-        "id": 13,
-        "name": "Supernatural",
-        "duration": 160
+body: {
+        "id": 1000,
+        "idUsuario": 1,
+        "mesa": 1,
+        "costo": 1,
+        "idEntrada": 0,
+        "idAcomp": 1,
+        "idPlato": 1,
+        "idBebida": 0,
+        "idPostre": 0,
+        "fecha": 0
     }
-	
-PUT
+    
+RFC2 http://localhost:8080/RotondAndes/rest/zonas/1
+@GET    
 
-http://localhost:8080/VideoAndes/rest/videos
+RFC3 http://localhost:8080/RotondAndes/rest/clientes/1
+@GET

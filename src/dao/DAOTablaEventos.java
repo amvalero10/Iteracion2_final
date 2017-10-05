@@ -24,7 +24,7 @@ public class DAOTablaEventos {
 	private Connection conn;
 
 	/**
-	 * Metodo constructor que crea DAOVideo
+	 * Metodo constructor que crea DAOEventos
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
 
@@ -56,9 +56,9 @@ public class DAOTablaEventos {
 	}
 
 	/**
-	 * Metodo que, usando la conexión a la base de datos, saca todos los videos de la base de datos
-	 * <b>SQL Statement:</b> SELECT * FROM VIDEOS;
-	 * @return Arraylist con los videos de la base de datos.
+	 * Metodo que, usando la conexión a la base de datos, saca todos los eventos de la base de datos
+	 * <b>SQL Statement:</b> SELECT * FROM EVENTO;
+	 * @return Arraylist con los eventos de la base de datos.
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
@@ -82,9 +82,9 @@ public class DAOTablaEventos {
 	}
 	
 	/**
-	 * Metodo que busca el/los videos con el nombre que entra como parametro.
-	 * @param name - Nombre de el/los videos a buscar
-	 * @return ArrayList con los videos encontrados
+	 * Metodo que busca el/los eventos con el nombre que entra como parametro.
+	 * @param name - Nombre de el/los events a buscar
+	 * @return ArrayList con los eventos encontrados
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
@@ -109,11 +109,11 @@ public class DAOTablaEventos {
 	}
 	
 	/**
-	 * Metodo que agrega el video que entra como parametro a la base de datos.
-	 * @param video - el video a agregar. video !=  null
-	 * <b> post: </b> se ha agregado el video a la base de datos en la transaction actual. pendiente que el video master
-	 * haga commit para que el video baje  a la base de datos.
-	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo agregar el video a la base de datos
+	 * Metodo que agrega el evento que entra como parametro a la base de datos.
+	 * @param evento - el evento a agregar. video !=  null
+	 * <b> post: </b> se ha agregado el evento a la base de datos en la transaction actual. pendiente que el video master
+	 * haga commit para que el evento baje  a la base de datos.
+	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo agregar el evento a la base de datos
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
 	public void addEvento(Evento evento) throws SQLException, Exception {
@@ -130,11 +130,11 @@ public class DAOTablaEventos {
 	}
 
 	/**
-	 * Metodo que actualiza el video que entra como parametro en la base de datos.
-	 * @param video - el video a actualizar. video !=  null
-	 * <b> post: </b> se ha actualizado el video en la base de datos en la transaction actual. pendiente que el video master
+	 * Metodo que actualiza el evento que entra como parametro en la base de datos.
+	 * @param evento - el evento a actualizar. evento !=  null
+	 * <b> post: </b> se ha actualizado el evento en la base de datos en la transaction actual. pendiente que el video master
 	 * haga commit para que los cambios bajen a la base de datos.
-	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el video.
+	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el evento.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
 	public void updateEvento(Evento evento) throws SQLException, Exception {
@@ -153,11 +153,11 @@ public class DAOTablaEventos {
 
 
 	/**
-	 * Metodo que elimina el video que entra como parametro en la base de datos.
-	 * @param video - el video a borrar. video !=  null
-	 * <b> post: </b> se ha borrado el video en la base de datos en la transaction actual. pendiente que el video master
+	 * Metodo que elimina el evento que entra como parametro en la base de datos.
+	 * @param evento - el evento a borrar. video !=  null
+	 * <b> post: </b> se ha borrado el evento en la base de datos en la transaction actual. pendiente que el video master
 	 * haga commit para que los cambios bajen a la base de datos.
-	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el video.
+	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el evento.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
 	public void deleteEvento(Evento evento) throws SQLException, Exception {

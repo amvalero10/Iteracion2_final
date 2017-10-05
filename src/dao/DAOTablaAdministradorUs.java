@@ -21,7 +21,7 @@ public class DAOTablaAdministradorUs {
 	private Connection conn;
 
 	/**
-	 * Metodo constructor que crea DAOVideo
+	 * Metodo constructor que crea DAOAdministrador
 	 * <b>post: </b> Crea la instancia del DAO e inicializa el Arraylist de recursos
 	 */
 	public DAOTablaAdministradorUs() {
@@ -52,9 +52,9 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Metodo que, usando la conexión a la base de datos, saca todos los videos de la base de datos
-	 * <b>SQL Statement:</b> SELECT * FROM VIDEOS;
-	 * @return Arraylist con los videos de la base de datos.
+	 * Metodo que, usando la conexión a la base de datos, saca todos los admin de la base de datos
+	 * <b>SQL Statement:</b> SELECT * FROM ADMINISTRADORES;
+	 * @return Arraylist con los admin de la base de datos.
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
@@ -80,8 +80,8 @@ public class DAOTablaAdministradorUs {
 
 	/**
 	 * Metodo que busca el/los videos con el nombre que entra como parametro.
-	 * @param name - Nombre de el/los videos a buscar
-	 * @return ArrayList con los videos encontrados
+	 * @param name - Nombre de el/los admin a buscar
+	 * @return ArrayList con los admin encontrados
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
@@ -106,9 +106,9 @@ public class DAOTablaAdministradorUs {
 	}
 	
 	/**
-	 * Metodo que busca el video con el id que entra como parametro.
-	 * @param name - Id de el video a buscar
-	 * @return Video encontrado
+	 * Metodo que busca el admin con el id que entra como parametro.
+	 * @param name - Id de el admin a buscar
+	 * @return AdministradorUs encontrado
 	 * @throws SQLException - Cualquier error que la base de datos arroje.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
@@ -135,11 +135,11 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Metodo que agrega el video que entra como parametro a la base de datos.
-	 * @param video - el video a agregar. video !=  null
-	 * <b> post: </b> se ha agregado el video a la base de datos en la transaction actual. pendiente que el video master
-	 * haga commit para que el video baje  a la base de datos.
-	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo agregar el video a la base de datos
+	 * Metodo que agrega el admin que entra como parametro a la base de datos.
+	 * @param video - el admin a agregar. video !=  null
+	 * <b> post: </b> se ha agregado el admin a la base de datos en la transaction actual. pendiente que el video master
+	 * haga commit para que el admin baje  a la base de datos.
+	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo agregar el admin a la base de datos
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
 	public void addAdministrador(AdministradorUs administradorUs) throws SQLException, Exception {
@@ -158,11 +158,11 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Metodo que actualiza el video que entra como parametro en la base de datos.
-	 * @param video - el video a actualizar. video !=  null
-	 * <b> post: </b> se ha actualizado el video en la base de datos en la transaction actual. pendiente que el video master
+	 * Metodo que actualiza el admin que entra como parametro en la base de datos.
+	 * @param admin - el admin a actualizar. video !=  null
+	 * <b> post: </b> se ha actualizado el admin en la base de datos en la transaction actual. pendiente que el video master
 	 * haga commit para que los cambios bajen a la base de datos.
-	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el video.
+	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el admin.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
 	 */
 	public void updateAdministrador(AdministradorUs administrador) throws SQLException, Exception {
@@ -181,9 +181,9 @@ public class DAOTablaAdministradorUs {
 	}
 
 	/**
-	 * Metodo que elimina el video que entra como parametro en la base de datos.
-	 * @param video - el video a borrar. video !=  null
-	 * <b> post: </b> se ha borrado el video en la base de datos en la transaction actual. pendiente que el video master
+	 * Metodo que elimina el admin que entra como parametro en la base de datos.
+	 * @param admin - el admin a borrar. video !=  null
+	 * <b> post: </b> se ha borrado el admin en la base de datos en la transaction actual. pendiente que el video master
 	 * haga commit para que los cambios bajen a la base de datos.
 	 * @throws SQLException - Cualquier error que la base de datos arroje. No pudo actualizar el video.
 	 * @throws Exception - Cualquier error que no corresponda a la base de datos
