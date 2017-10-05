@@ -24,7 +24,7 @@ import vos.PlatoFuerte;
  * @author angeloMarcetty
  *
  */
-@Path("platofuertes")
+@Path("restaurantesus/{idRestaurantesus: \\d+}/platofuertes")
 public class PlatoFuerteService {
 	@Context
 	private ServletContext context;
@@ -42,8 +42,10 @@ public class PlatoFuerteService {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getPlatoFuertes() {
+	public Response getPlatoFuertes(@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<PlatoFuerte> platoFuertes;
 		try {
 			platoFuertes = tm.darPlatoFuertes();
@@ -51,6 +53,11 @@ public class PlatoFuerteService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(platoFuertes).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -59,9 +66,11 @@ public class PlatoFuerteService {
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getPlatoFuerte( @PathParam( "id" ) Long id )
+	public Response getPlatoFuerte( @PathParam( "id" ) Long id,@PathParam("idRestaurantesus") Long idRestaurantesus ) throws Exception
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try
 		{
 			PlatoFuerte e = tm.buscarPlatoFuerteId(id);
@@ -70,6 +79,11 @@ public class PlatoFuerteService {
 		catch( Exception e )
 		{
 			return Response.status( 500 ).entity( doErrorMessage( e ) ).build( );
+		}
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
 		}
 	}
 	
@@ -80,8 +94,10 @@ public class PlatoFuerteService {
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getPlatoFuerteName( @QueryParam("nombre") String name) {
+	public Response getPlatoFuerteName( @QueryParam("nombre") String name,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<PlatoFuerte> platoFuertes;
 		try {
 			if (name == null || name.length() == 0)
@@ -91,6 +107,11 @@ public class PlatoFuerteService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(platoFuertes).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -99,14 +120,22 @@ public class PlatoFuerteService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addPlatoFuerte(PlatoFuerte platoFuerte) {
+	public Response addPlatoFuerte(PlatoFuerte platoFuerte,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addPlatoFuerte(platoFuerte);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(platoFuerte).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -116,14 +145,21 @@ public class PlatoFuerteService {
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addPlatoFuertes(List<PlatoFuerte> platoFuertes) {
+	public Response addPlatoFuertes(List<PlatoFuerte> platoFuertes,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addPlatoFuertes(platoFuertes);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(platoFuertes).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -131,14 +167,21 @@ public class PlatoFuerteService {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updatePlatoFuerte(PlatoFuerte platoFuerte) {
+	public Response updatePlatoFuerte(PlatoFuerte platoFuerte,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.updatePlatoFuerte(platoFuerte);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(platoFuerte).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -148,14 +191,21 @@ public class PlatoFuerteService {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deletePlatoFuerte(PlatoFuerte platoFuerte) {
+	public Response deletePlatoFuerte(PlatoFuerte platoFuerte,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.deletePlatoFuerte(platoFuerte);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(platoFuerte).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 

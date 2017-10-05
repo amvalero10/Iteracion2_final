@@ -23,7 +23,7 @@ import vos.Postre;
  * @author angeloMarcetty
  *
  */
-@Path("postres")
+@Path("restaurantesus/{idRestaurantesus: \\d+}/postres")
 public class PostreService {
 	
 	
@@ -44,8 +44,10 @@ public class PostreService {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getPostres() {
+	public Response getPostres(@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<Postre> postres;
 		try {
 			postres = tm.darPostres();
@@ -53,6 +55,11 @@ public class PostreService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(postres).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -61,9 +68,11 @@ public class PostreService {
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getPostre( @PathParam( "id" ) Long id )
+	public Response getPostre( @PathParam( "id" ) Long id,@PathParam("idRestaurantesus") Long idRestaurantesus ) throws Exception
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try
 		{
 			Postre e = tm.buscarPostreId(id);
@@ -72,6 +81,11 @@ public class PostreService {
 		catch( Exception e )
 		{
 			return Response.status( 500 ).entity( doErrorMessage( e ) ).build( );
+		}
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
 		}
 	}
 	
@@ -82,8 +96,10 @@ public class PostreService {
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getPostreName( @QueryParam("nombre") String name) {
+	public Response getPostreName( @QueryParam("nombre") String name,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<Postre> postres;
 		try {
 			if (name == null || name.length() == 0)
@@ -93,6 +109,11 @@ public class PostreService {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(postres).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -101,14 +122,21 @@ public class PostreService {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addPostre(Postre postre) {
+	public Response addPostre(Postre postre,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addPostre(postre);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(postre).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -118,14 +146,21 @@ public class PostreService {
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addPostres(List<Postre> postres) {
+	public Response addPostres(List<Postre> postres,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addPostres(postres);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(postres).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -133,14 +168,21 @@ public class PostreService {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updatePostre(Postre postre) {
+	public Response updatePostre(Postre postre,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.updatePostre(postre);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(postre).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -150,14 +192,21 @@ public class PostreService {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deletePostre(Postre postre) {
+	public Response deletePostre(Postre postre,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.deletePostre(postre);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(postre).build();
+	}
+	else
+	{
+		throw new Exception("No tiene permisos para acceder a estos recursos");
+	}
 	}
 	
 	

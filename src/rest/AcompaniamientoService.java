@@ -24,7 +24,7 @@ import vos.Acompaniamiento;
  * @author angeloMarcetty
  *
  */
-@Path("acompaniamiento")
+@Path("restaurantesus/{idRestaurantesus: \\d+}/acompaniamientos")
 public class AcompaniamientoService
 {
 	
@@ -45,8 +45,13 @@ public class AcompaniamientoService
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getAcompaniamientos() {
+	public Response getAcompaniamientos(@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
+			
+		
 		List<Acompaniamiento> acompaniamientos;
 		try {
 			acompaniamientos = tm.darAcompaniamientos();
@@ -54,6 +59,15 @@ public class AcompaniamientoService
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(acompaniamientos).build();
+		
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+
+			
+		}
+			
 	}
 	
 	
@@ -61,9 +75,12 @@ public class AcompaniamientoService
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getAcompaniamiento( @PathParam( "id" ) Long id )
+	public Response getAcompaniamiento( @PathParam( "id" ) Long id,@PathParam("idRestaurantesus") Long idRestaurantesus ) throws Exception
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
+
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try
 		{
 			Acompaniamiento a = tm.buscarAcompaniamientoPorId( id );
@@ -73,6 +90,12 @@ public class AcompaniamientoService
 		{
 			return Response.status( 500 ).entity( doErrorMessage( e ) ).build( );
 		}
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");			
+		}
+		
 	}
 	
 	
@@ -82,8 +105,11 @@ public class AcompaniamientoService
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getAcompaniamientoName( @QueryParam("nombre") String name) {
+	public Response getAcompaniamientoName( @QueryParam("nombre") String name,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<Acompaniamiento> acompaniamientos;
 		try {
 			if (name == null || name.length() == 0)
@@ -93,6 +119,11 @@ public class AcompaniamientoService
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(acompaniamientos).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");			
+		}
 	}
 	
 	
@@ -101,14 +132,21 @@ public class AcompaniamientoService
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addAcompaniamiento(Acompaniamiento acompaniamiento) {
+	public Response addAcompaniamiento(Acompaniamiento acompaniamiento,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addAcompaniamiento(acompaniamiento);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(acompaniamiento).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");			
+		}
 	}
 	
 	
@@ -118,14 +156,21 @@ public class AcompaniamientoService
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addAcompaniamientos(List<Acompaniamiento> acompaniamientos) {
+	public Response addAcompaniamientos(List<Acompaniamiento> acompaniamientos,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addAcompaniamientos(acompaniamientos);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(acompaniamientos).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");			
+		}
 	}
 	
 	
@@ -133,14 +178,21 @@ public class AcompaniamientoService
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateAcompaniamiento(Acompaniamiento acompaniamiento) {
+	public Response updateAcompaniamiento(Acompaniamiento acompaniamiento,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.updateAcompaniamiento(acompaniamiento);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(acompaniamiento).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");			
+		}
 	}
 	
 	
@@ -150,14 +202,21 @@ public class AcompaniamientoService
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteAcompaniamiento(Acompaniamiento acompaniamiento) {
+	public Response deleteAcompaniamiento(Acompaniamiento acompaniamiento,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.deleteAcompaniamiento(acompaniamiento);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(acompaniamiento).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");			
+		}
 	}
 	
 
