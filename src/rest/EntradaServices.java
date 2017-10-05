@@ -24,7 +24,7 @@ import vos.Entrada;
  * @author angeloMarcetty
  *
  */
-@Path("entradas")
+@Path("restaurantesus/{idRestaurantesus: \\d+}/entradas")
 public class EntradaServices {
 	
 	@Context
@@ -43,8 +43,10 @@ public class EntradaServices {
 	
 	@GET
 	@Produces({ MediaType.APPLICATION_JSON })
-	public Response getEntradas() {
+	public Response getEntradas(@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<Entrada> entradas;
 		try {
 			entradas = tm.darEntradas();
@@ -52,6 +54,11 @@ public class EntradaServices {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(entradas).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -60,9 +67,11 @@ public class EntradaServices {
 	@GET
 	@Path( "{id: \\d+}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntrada( @PathParam( "id" ) Long id )
+	public Response getEntrada( @PathParam( "id" ) Long id,@PathParam("idRestaurantesus") Long idRestaurantesus ) throws Exception
 	{
 		RotondAndesTM tm = new RotondAndesTM( getPath( ) );
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try
 		{
 			Entrada e = tm.buscarEntradaPorId( id );
@@ -72,6 +81,12 @@ public class EntradaServices {
 		{
 			return Response.status( 500 ).entity( doErrorMessage( e ) ).build( );
 		}
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
+		
 	}
 	
 	
@@ -81,8 +96,10 @@ public class EntradaServices {
 	@GET
 	@Path( "{nombre}" )
 	@Produces( { MediaType.APPLICATION_JSON } )
-	public Response getEntradaName( @QueryParam("nombre") String name) {
+	public Response getEntradaName( @QueryParam("nombre") String name,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		List<Entrada> entradas;
 		try {
 			if (name == null || name.length() == 0)
@@ -92,6 +109,11 @@ public class EntradaServices {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(entradas).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -100,14 +122,21 @@ public class EntradaServices {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntrada(Entrada entrada) {
+	public Response addEntrada(Entrada entrada,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addEntrada(entrada);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(entrada).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -117,14 +146,21 @@ public class EntradaServices {
 	@Path("/varios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response addEntradas(List<Entrada> entradas) {
+	public Response addEntradas(List<Entrada> entradas,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.addEntradas(entradas);;
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(entradas).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -132,14 +168,21 @@ public class EntradaServices {
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response updateEntrada(Entrada entrada) {
+	public Response updateEntrada(Entrada entrada,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.updateEntrada(entrada);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(entrada).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 	
@@ -149,14 +192,21 @@ public class EntradaServices {
 	@DELETE
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response deleteEntrada(Entrada entrada) {
+	public Response deleteEntrada(Entrada entrada,@PathParam("idRestaurantesus") Long idRestaurantesus) throws Exception {
 		RotondAndesTM tm = new RotondAndesTM(getPath());
+		if (tm.buscarRestauranteUsPorId(idRestaurantesus) != null) 
+		{
 		try {
 			tm.deleteEntrada(entrada);
 		} catch (Exception e) {
 			return Response.status(500).entity(doErrorMessage(e)).build();
 		}
 		return Response.status(200).entity(entrada).build();
+		}
+		else
+		{
+			throw new Exception("No tiene permisos para acceder a estos recursos");
+		}
 	}
 	
 

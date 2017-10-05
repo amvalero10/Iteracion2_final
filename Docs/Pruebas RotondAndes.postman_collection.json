@@ -1,0 +1,841 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Pruebas RotondAndes",
+		"_postman_id": "c160cf9e-e302-8e0b-3864-ecc95e7b1da0",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Restaurantes",
+			"description": "",
+			"item": [
+				{
+					"name": "Todos los restaurantes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/administradores/1/restaurantes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"empanada con aji\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"panaderia\",\n        \"descripcion\": \"empanada de carne & aji\",\n        \"tiempoPrep\": 15,\n        \"precioProd\": 1000,\n        \"tipo\": \"panaderia\",\n        \"descripcionIng\": \"emp\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"emp\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:1 restaurantes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/administradores/1/restaurantes/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"empanada con aji\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"panaderia\",\n        \"descripcion\": \"empanada de carne & aji\",\n        \"tiempoPrep\": 15,\n        \"precioProd\": 1000,\n        \"tipo\": \"panaderia\",\n        \"descripcionIng\": \"emp\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"emp\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:10 restaurantes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/administradores/1/restaurantes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n        \"id\": 10,\n        \"nombre\": \"abc\",\n        \"cuentaBancaria\": 2231231312,\n        \"personalizable\": true,\n        \"descripcion\": \"agradable\",\n        \"tipo\": \"casero\",\n        \"paginaWeb\": \"WWW.lloll.COM\",\n        \"representante\": \"mu\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:10 restaurantes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/administradores/1/restaurantes",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n        \"id\": 10,\n        \"nombre\": \"abc-dfg\",\n        \"cuentaBancaria\": 232222222,\n        \"personalizable\": true,\n        \"descripcion\": \"agradable\",\n        \"tipo\": \"casero\",\n        \"paginaWeb\": \"WWW.lloll.COM\",\n        \"representante\": \"mu-&-mi\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:10 restaurantes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/administradores/1/restaurantes",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n        \"id\": 10,\n        \"nombre\": \"abc-dfg\",\n        \"cuentaBancaria\": 232222222,\n        \"personalizable\": true,\n        \"descripcion\": \"agradable\",\n        \"tipo\": \"casero\",\n        \"paginaWeb\": \"WWW.lloll.COM\",\n        \"representante\": \"mu-&-mi\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Entradas",
+			"description": "",
+			"item": [
+				{
+					"name": "Todas las Entradas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/entradas",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"Bocadillo & coco\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"Dulce\",\n        \"descripcion\": \"Rico postre dulce con coco\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"dulce\",\n        \"descripcionIng\": \"dlc\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"dcl\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:1 Entradas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/entradas/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"Bocadillo & coco\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"Dulce\",\n        \"descripcion\": \"Rico postre dulce con coco\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"dulce\",\n        \"descripcionIng\": \"dlc\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"dcl\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Entradas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/entradas",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"empanada\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"panaderia\",\n        \"descripcion\": \"empanada de carne\",\n        \"tiempoPrep\": 15,\n        \"precioProd\": 1000,\n        \"tipo\": \"panaderia\",\n        \"descripcionIng\": \"emp\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"emp\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Entradas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/entradas",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"empanada con aji\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"panaderia\",\n        \"descripcion\": \"empanada de carne & aji\",\n        \"tiempoPrep\": 15,\n        \"precioProd\": 1000,\n        \"tipo\": \"panaderia\",\n        \"descripcionIng\": \"emp\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"emp\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Entradas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/entradas",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"empanada con aji\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"panaderia\",\n        \"descripcion\": \"empanada de carne & aji\",\n        \"tiempoPrep\": 15,\n        \"precioProd\": 1000,\n        \"tipo\": \"panaderia\",\n        \"descripcionIng\": \"emp\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"emp\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Postre",
+			"description": "",
+			"item": [
+				{
+					"name": "todos los Postres",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/postres",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"ensalada de verduras & frutas\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"verdura-fruta\",\n        \"descripcion\": \"saludable ensalda &frutas frescas\",\n        \"tiempoPrep\": 20,\n        \"precioProd\": 1000,\n        \"tipo\": \"verdura\",\n        \"descripcionIng\": \"verd\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"verd\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:4 Postres",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/postres/4",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"ensalada de verduras & frutas\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"verdura-fruta\",\n        \"descripcion\": \"saludable ensalda &frutas frescas\",\n        \"tiempoPrep\": 20,\n        \"precioProd\": 1000,\n        \"tipo\": \"verdura\",\n        \"descripcionIng\": \"verd\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"verd\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Postres",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/postres",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"Bocadillo\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"Dulce\",\n        \"descripcion\": \"Rico postre dulce\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"dulce\",\n        \"descripcionIng\": \"dlc\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"dcl\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Postres",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/postres",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"Bocadillo & coco\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"Dulce\",\n        \"descripcion\": \"Rico postre dulce con coco\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"dulce\",\n        \"descripcionIng\": \"dlc\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"dcl\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Postres",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/postres",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"Bocadillo & coco\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"Dulce\",\n        \"descripcion\": \"Rico postre dulce con coco\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"dulce\",\n        \"descripcionIng\": \"dlc\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"dcl\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Acompaniamientos",
+			"description": "",
+			"item": [
+				{
+					"name": "todos los Acompaniamientos",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/acompaniamientos",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"pizza-hawai\",\n        \"cantidad\": 300,\n        \"personalizable\": true,\n        \"precioVenta\": 7000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"pizza\",\n        \"descripcion\": \"pizza italy and hawai\",\n        \"tiempoPrep\": 30,\n        \"precioProd\": 1000,\n        \"tipo\": \"pizza-panaderia\",\n        \"descripcionIng\": \"pizza\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"piza\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:1 Acompaniamientos",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/acompaniamientos/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"pizza-hawai\",\n        \"cantidad\": 300,\n        \"personalizable\": true,\n        \"precioVenta\": 7000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"pizza\",\n        \"descripcion\": \"pizza italy and hawai\",\n        \"tiempoPrep\": 30,\n        \"precioProd\": 1000,\n        \"tipo\": \"pizza-panaderia\",\n        \"descripcionIng\": \"pizza\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"piza\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Acompaniamientos",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/acompaniamientos",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"ensalada de verduras\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"verdura\",\n        \"descripcion\": \"saludable ensalda\",\n        \"tiempoPrep\": 10,\n        \"precioProd\": 1000,\n        \"tipo\": \"verdura\",\n        \"descripcionIng\": \"verd\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"verd\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Acompaniamientos",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/acompaniamientos",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"ensalada de verduras & frutas\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"verdura-fruta\",\n        \"descripcion\": \"saludable ensalda &frutas frescas\",\n        \"tiempoPrep\": 20,\n        \"precioProd\": 1000,\n        \"tipo\": \"verdura\",\n        \"descripcionIng\": \"verd\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"verd\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 Acompaniamientos",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/acompaniamientos",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"ensalada de verduras & frutas\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"verdura-fruta\",\n        \"descripcion\": \"saludable ensalda &frutas frescas\",\n        \"tiempoPrep\": 20,\n        \"precioProd\": 1000,\n        \"tipo\": \"verdura\",\n        \"descripcionIng\": \"verd\",\n        \"numeroVendidos\": 1000,\n        \"traduccion\": \"verd\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PlatoFuertes",
+			"description": "",
+			"item": [
+				{
+					"name": "Todos los PlatoFuertes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/platofuertes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 6,\n        \"nombre\": \"te-casero\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"sin azucar y con amor\",\n        \"descripcion\": \"te saludable\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"bebida sin azucar y casro\",\n        \"descripcionIng\": \"refre\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"te\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:1 PlatoFuertes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/platofuertes/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 6,\n        \"nombre\": \"te-casero\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"sin azucar y con amor\",\n        \"descripcion\": \"te saludable\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"bebida sin azucar y casro\",\n        \"descripcionIng\": \"refre\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"te\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 PlatoFuertes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/platofuertes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"pizza\",\n        \"cantidad\": 300,\n        \"personalizable\": true,\n        \"precioVenta\": 7000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"pizza\",\n        \"descripcion\": \"pizza italy\",\n        \"tiempoPrep\": 20,\n        \"precioProd\": 1000,\n        \"tipo\": \"pizza-panaderia\",\n        \"descripcionIng\": \"pizza\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"piza\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 PlatoFuertes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/platofuertes",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"pizza-hawai\",\n        \"cantidad\": 300,\n        \"personalizable\": true,\n        \"precioVenta\": 7000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"pizza\",\n        \"descripcion\": \"pizza italy and hawai\",\n        \"tiempoPrep\": 30,\n        \"precioProd\": 1000,\n        \"tipo\": \"pizza-panaderia\",\n        \"descripcionIng\": \"pizza\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"piza\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "id:9 PlatoFuertes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/platofuertes",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 9,\n        \"nombre\": \"pizza-hawai\",\n        \"cantidad\": 300,\n        \"personalizable\": true,\n        \"precioVenta\": 7000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"pizza\",\n        \"descripcion\": \"pizza italy and hawai\",\n        \"tiempoPrep\": 30,\n        \"precioProd\": 1000,\n        \"tipo\": \"pizza-panaderia\",\n        \"descripcionIng\": \"pizza\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"piza\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bebidas",
+			"description": "",
+			"item": [
+				{
+					"name": "Get todas Bebidas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/bebidas",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 3,\n        \"nombre\": \"AguacateVerde\",\n        \"tipo\": \"Aguacate verde\",\n        \"descripcionEsp\": \"Aguacate muy verde\",\n        \"descripcionIng\": \"Aguacate parp\",\n        \"traduccion\": \"Aguc\",\n        \"alimentoAsc\": \"PlatoFuerte\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get id:1Bebidas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/bebidas/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 3,\n        \"nombre\": \"AguacateVerde\",\n        \"tipo\": \"Aguacate verde\",\n        \"descripcionEsp\": \"Aguacate muy verde\",\n        \"descripcionIng\": \"Aguacate parp\",\n        \"traduccion\": \"Aguc\",\n        \"alimentoAsc\": \"PlatoFuerte\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Post id:6 Bebidas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/bebidas",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 6,\n        \"nombre\": \"te\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"sin azucar\",\n        \"descripcion\": \"te saludable\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"bebida sin azucar\",\n        \"descripcionIng\": \"refre\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"te\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT id:6 Bebidas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/bebidas",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 6,\n        \"nombre\": \"te-casero\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"sin azucar y con amor\",\n        \"descripcion\": \"te saludable\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"bebida sin azucar y casro\",\n        \"descripcionIng\": \"refre\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"te\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DEL id:6 Bebidas",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/bebidas",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 6,\n        \"nombre\": \"te-casero\",\n        \"cantidad\": 300,\n        \"personalizable\": false,\n        \"precioVenta\": 2000,\n        \"restaurante\": \"La Abuela\",\n        \"categoria\": \"sin azucar y con amor\",\n        \"descripcion\": \"te saludable\",\n        \"tiempoPrep\": 0,\n        \"precioProd\": 1000,\n        \"tipo\": \"bebida sin azucar y casro\",\n        \"descripcionIng\": \"refre\",\n        \"numeroVendidos\": 9000,\n        \"traduccion\": \"te\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingredientes",
+			"description": "",
+			"item": [
+				{
+					"name": "GET todos Ingredientes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/ingredientes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7,\n    \"tipoId\": \"cedula\",\n    \"nombre\": \"Luis\",\n    \"correo\": \"abierto.com\",\n    \"rol\": \"Admin\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET 1 Ingredientes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/ingredientes/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7,\n    \"tipoId\": \"cedula\",\n    \"nombre\": \"Luis\",\n    \"correo\": \"abierto.com\",\n    \"rol\": \"Admin\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST id:3 Ingredientes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/ingredientes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 3,\n        \"nombre\": \"Aguacate\",\n        \"tipo\": \"Aguacate oscuro\",\n        \"descripcionEsp\": \"Aguacate muy amarillo\",\n        \"descripcionIng\": \"Aguacate parp\",\n        \"traduccion\": \"Aguc\",\n        \"alimentoAsc\": \"PlatoFuerte\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT id:3 Ingredientes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/ingredientes",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 3,\n        \"nombre\": \"AguacateVerde\",\n        \"tipo\": \"Aguacate verde\",\n        \"descripcionEsp\": \"Aguacate muy verde\",\n        \"descripcionIng\": \"Aguacate parp\",\n        \"traduccion\": \"Aguc\",\n        \"alimentoAsc\": \"PlatoFuerte\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DEL id:3 Ingredientes",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1/ingredientes",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"id\": 3,\n        \"nombre\": \"AguacateVerde\",\n        \"tipo\": \"Aguacate verde\",\n        \"descripcionEsp\": \"Aguacate muy verde\",\n        \"descripcionIng\": \"Aguacate parp\",\n        \"traduccion\": \"Aguc\",\n        \"alimentoAsc\": \"PlatoFuerte\"\n    }"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserRestaurante",
+			"description": "",
+			"item": [
+				{
+					"name": "get todos userRestaurante",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "get 1 userRestaurante",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus/1",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "post userRestaurante",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7,\n    \"tipoId\": \"cedula\",\n    \"nombre\": \"Luis\",\n    \"correo\": \"abierto\",\n    \"rol\": \"cliente\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT userRestaurante",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7,\n    \"tipoId\": \"cedula\",\n    \"nombre\": \"Luis\",\n    \"correo\": \"abierto.com\",\n    \"rol\": \"Admin\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DEL userRestaurante",
+					"request": {
+						"url": "http://localhost:8080/RotondAndes/rest/restaurantesus",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 7,\n    \"tipoId\": \"cedula\",\n    \"nombre\": \"Luis\",\n    \"correo\": \"abierto.com\",\n    \"rol\": \"Admin\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

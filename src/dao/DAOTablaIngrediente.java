@@ -57,11 +57,12 @@ public class DAOTablaIngrediente {
 			String descripcionEsp = rs.getString("DESCRIPCION_ESP");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
 			String traduccion = rs.getString("TRADUCCION");
+			String alimentoAsc = rs.getString("ALIMENTOASC");
 
 
 			
 			
-			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng,traduccion);
+			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng,traduccion,alimentoAsc);
 			ingredientes.add(entr);
 		}
 		return ingredientes;
@@ -87,9 +88,10 @@ public class DAOTablaIngrediente {
 			String descripcionEsp = rs.getString("DESCRIPCION_ESP");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
 			String traduccion = rs.getString("TRADUCCION");
+			String alimentoAsc = rs.getString("ALIMENTOASC");
 			
 			
-			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng, traduccion);
+			Ingrediente entr = new Ingrediente(id, nombre, tipo, descripcionEsp, descripcionIng, traduccion,alimentoAsc);
 			ingredientes.add(entr);
 		
 		}
@@ -117,8 +119,9 @@ public class DAOTablaIngrediente {
 			String descripcionEsp = rs.getString("DESCRIPCION_ESP");
 			String descripcionIng = rs.getString("DESCRIPCION_ING");
 			String traduccion = rs.getString("TRADUCCION");
+			String alimentoAsc = rs.getString("ALIMENTOASC");
 			
-			ingrediente = new Ingrediente(id2, nombre, tipo, descripcionEsp, descripcionIng,traduccion);
+			ingrediente = new Ingrediente(id2, nombre, tipo, descripcionEsp, descripcionIng,traduccion,alimentoAsc);
 			
 		}
 
@@ -136,7 +139,9 @@ public class DAOTablaIngrediente {
 		sql += ingrediente.getTipo() + "','";
 		sql += ingrediente.getDescripcionEsp() + "','";
 		sql += ingrediente.getDescripcionIng() + "','";
-		sql += ingrediente.getTraduccion() + "')";
+		sql += ingrediente.getTraduccion() + "','" ;
+		sql += ingrediente.getAlimentoAsc() + "')";
+		
 
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		recursos.add(prepStmt);
@@ -155,6 +160,8 @@ public class DAOTablaIngrediente {
 		sql += "DESCRIPCION_ESP='" + ingrediente.getDescripcionEsp() + "',";
 		sql += "DESCRIPCION_ING='" + ingrediente.getDescripcionIng() + "',";
 		sql += "TRADUCCION='" + ingrediente.getTraduccion()+ "',";
+		sql += "ALIMENTOASC='" + ingrediente.getAlimentoAsc()+ "'";
+
 
 		sql += " WHERE ID = " + ingrediente.getId();
 
