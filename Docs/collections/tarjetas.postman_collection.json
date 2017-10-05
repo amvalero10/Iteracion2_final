@@ -1,0 +1,139 @@
+{
+	"variables": [],
+	"info": {
+		"name": "tarjetas",
+		"_postman_id": "28c039f7-ca63-e4e3-be7b-7f093960604a",
+		"description": "pruebas tarjetas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get tarjetas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/tarjetas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"abierto\",\n        \"condiciones\": \"cerrado\",\n        \"tipoEspacio\": \"cerrado\",\n        \"apto\": 1,\n        \"capacidad\": 20}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post tarjeta existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 500\"] = responseCode.code === 500;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/tarjetas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"numero\": 3246874,\n        \"contrasenia\": 6874,\n        \"fechaExpiracion\": \"153426\",\n        \"tipo\": \"credito\",\n        \"nombreBanco\": \"davivienda\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get tarjetas/3246874",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/tarjetas/3246874",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"numero\": 3246874,\n        \"contrasenia\": 6874,\n        \"fechaExpiracion\": \"153426\",\n        \"tipo\": \"credito\",\n        \"nombreBanco\": \"davivienda\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put tarjetas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/tarjetas/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"numero\": 3246874,\n        \"contrasenia\": 6874,\n        \"fechaExpiracion\": \"153426\",\n        \"tipo\": \"credito\",\n        \"nombreBanco\": \"davivienda\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

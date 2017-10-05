@@ -1,0 +1,171 @@
+{
+	"variables": [],
+	"info": {
+		"name": "zonas",
+		"_postman_id": "e386ef1e-902c-b404-9b56-c90f93f88c22",
+		"description": "pruebas de zonas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get zonas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/zonas/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"tipoId\": \"cadula\",\n    \"nombre\": \"sebastian\",\n    \"correo\": \"abierto\",\n    \"rol\": \"cliente\",\n    \"pedidos\": []\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post zonas existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 500\"] = responseCode.code === 500;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/zonas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"cerrado\",\n        \"condiciones\": \"cerrado\",\n        \"tipoEspacio\": \"cerrado\",\n        \"apto\": 1,\n        \"capacidad\": 20}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post otro existente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 500\"] = responseCode.code === 500;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/zonas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"abierto\",\n        \"condiciones\": \"cerrado\",\n        \"tipoEspacio\": \"cerrado\",\n        \"apto\": 1,\n        \"capacidad\": 20}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get zona",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/zonas",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"abierto\",\n        \"condiciones\": \"cerrado\",\n        \"tipoEspacio\": \"cerrado\",\n        \"apto\": 1,\n        \"capacidad\": 20}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put zonas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/zonas",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"abierto\",\n        \"condiciones\": \"cerrado\",\n        \"tipoEspacio\": \"cerrado\",\n        \"apto\": 1,\n        \"capacidad\": 20}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

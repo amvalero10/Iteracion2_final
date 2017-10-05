@@ -1,0 +1,139 @@
+{
+	"variables": [],
+	"info": {
+		"name": "pedidos pruebas",
+		"_postman_id": "7f4abb8c-bd5e-4f5d-5197-f8dba59478dc",
+		"description": "pruebas de pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "grt pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/pedidos",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"fecha\": \"156874\",\n        \"cantidad\": 25,\n        \"nombre\": \"sebastian\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get pedidos/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/pedidos/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"fecha\": \"156874\",\n        \"cantidad\": 25,\n        \"nombre\": \"sebastian\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 400\"] = responseCode.code === 400;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/pedidos/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"fecha\": \"156874\",\n        \"cantidad\": 25,\n        \"nombre\": \"sebastian\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put pedidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/pedidos/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"id\": 1,\n        \"idUsuario\": 1,\n        \"mesa\": 1,\n        \"costo\": 1,\n        \"idEntrada\": 0,\n        \"idAcomp\": 1,\n        \"idPlato\": 1,\n        \"idBebida\": 0,\n        \"idPostre\": 0,\n        \"fecha\": 0}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

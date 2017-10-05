@@ -1,0 +1,161 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Evento",
+		"_postman_id": "4fedf5cc-d3ca-a7af-8b6c-a7770eb8901f",
+		"description": "pruebas evento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "post un evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/eventos",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"fecha\": \"156774\",\n        \"cantidad\": 35,\n        \"nombre\": \"cumpleanios\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get eventos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/eventos",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"id\": 1,\r\n        \"personalizable\": true,\r\n        \"descripcionIng\": \"leche y mas\",\r\n        \"numeroVendidos\": 90,\r\n        \"tiempoPrep\": 60,\r\n        \"categoria\": \"dulce\",\r\n        \"restaurante\": \"los postres\",\r\n        \"precioVenta\": 10000,\r\n        \"cantidad\": 68,\r\n        \"nombre\": \"DeNata\",\r\n        \"descripcion\": \"un postre dulce de nata\",\r\n        \"precioProd\": 5000,\r\n        \"tipo\": \"postres\",\r\n        \"traduccion\": \"dessert\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get evento/name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "http://localhost:8080/RotondAndes/rest/eventos/nombre?nombre=sebastian",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"RotondAndes",
+						"rest",
+						"eventos",
+						"nombre"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "sebastian",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"id\": 1,\r\n        \"personalizable\": true,\r\n        \"descripcionIng\": \"leche y mas\",\r\n        \"numeroVendidos\": 90,\r\n        \"tiempoPrep\": 60,\r\n        \"categoria\": \"dulce\",\r\n        \"restaurante\": \"los postres\",\r\n        \"precioVenta\": 10000,\r\n        \"cantidad\": 68,\r\n        \"nombre\": \"DeNata\",\r\n        \"descripcion\": \"un postre dulce de nata\",\r\n        \"precioProd\": 5000,\r\n        \"tipo\": \"postres\",\r\n        \"traduccion\": \"dessert\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/eventos/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"fecha\": \"156874\",\n        \"cantidad\": 25,\n        \"nombre\": \"sebastian\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

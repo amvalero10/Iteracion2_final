@@ -1,0 +1,139 @@
+{
+	"variables": [],
+	"info": {
+		"name": "clientes",
+		"_postman_id": "84c05961-99e1-a42f-dd58-485afcd63372",
+		"description": "pruebas de los clientes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get clientes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/clientes/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"fecha\": \"156874\",\n        \"cantidad\": 25,\n        \"nombre\": \"sebastian\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get clientes/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/clientes/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\t\t\"fecha\": \"156874\",\n        \"cantidad\": 25,\n        \"nombre\": \"sebastian\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post clientes/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 405\"] = responseCode.code === 405;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/clientes/1",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"tipoId\": \"cadula\",\n    \"nombre\": \"sebastian\",\n    \"correo\": \"abierto\",\n    \"rol\": \"cliente\",\n    \"pedidos\": []\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put cliente exist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"response code is 200\"] = responseCode.code === 200;",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/RotondAndes/rest/clientes/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"tipoId\": \"cadula\",\n    \"nombre\": \"sebastian\",\n    \"correo\": \"abierto\",\n    \"rol\": \"cliente\",\n    \"pedidos\": []\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
